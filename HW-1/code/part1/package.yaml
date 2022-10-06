@@ -1,0 +1,12 @@
+name: warmup
+
+# The packages we (may) depend on
+dependencies:
+  - base             # For built-in functions like `length`
+# For assignment 1, don't add anything else here
+
+# The Warmup library
+library:
+  source-dirs: src
+  exposed-modules:
+    - Warmup

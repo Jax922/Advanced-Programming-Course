@@ -1,0 +1,32 @@
+name: arithmetic
+
+# The packages we (may) depend on
+dependencies:
+  - base             # For built-in functions like `length`
+  - containers       # For Data.Map, etc., if needed
+  # Don't add anything else here
+
+# The Arithmetic library
+library:
+  source-dirs: src
+  ghc-options:
+    - -W
+  exposed-modules:
+    - Arithmetic
+    - Definitions
+
+# No stand-alone executable to build
+#executable:
+#  main: Main.hs
+#  source-dirs: src
+
+# Sample test suite
+tests:
+  my-test-suite:
+    main: Test.hs
+    source-dirs: tests
+    dependencies:
+      - arithmetic
+      - tasty     # The Test.Tasty framework, if you want to use it
+      - tasty-hunit
+      # you may add other packages here, if really needed

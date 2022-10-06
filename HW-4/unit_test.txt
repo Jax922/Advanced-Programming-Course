@@ -1,0 +1,57 @@
+======================== EUnit ========================
+======================= start/1 unit test =======================
+  test_emoji: -test_start_server/0-fun-7- (call start/1 with empty Initial)...ok
+  test_emoji: -test_start_server/0-fun-5- (call start/1 with medium size Initial)...ok
+  test_emoji: -test_start_server/0-fun-3- (call start/1 with small size Initial)...ok
+  test_emoji: -test_start_server/0-fun-1- (error call start/1: same emoji in Initial)...ok
+  [done in 0.012 s]
+======================= new_shortcode/3 unit test ======================
+  test_emoji: -test_newshotcode/0-fun-5- (call new_shortcode/3 with new shortcode)...ok
+  test_emoji: -test_newshotcode/0-fun-3- (error call new_shortcode/3 with exist shortcode)...ok
+  test_emoji: -test_newshotcode/0-fun-1- (call new_shortcode/3 with two same emoji)...ok
+  [done in 0.009 s]
+======================= alias/3 unit test ======================
+  test_emoji: -test_alias/0-fun-7- (call alais/3 simple case alias to shortcode)...ok
+  test_emoji: -test_alias/0-fun-5- (call alais/3 simple case alias to alias)...ok
+  test_emoji: -test_alias/0-fun-3- (error call alais/3 shortcode  does not exist)...ok
+  test_emoji: -test_alias/0-fun-1- (error call alais/3 alias exist)...ok
+  [done in 0.012 s]
+======================= delete/2 unit test ======================
+  test_emoji: -test_delete/0-fun-16- (call delete/2 with empty emoji list)...ok
+  test_emoji: -test_delete/0-fun-14- (call delete/2 with exist emoji)...ok
+  test_emoji: -test_delete/0-fun-11- (call delete/2 with shortcode, it's aliases are gone?)...ok
+  test_emoji: -test_delete/0-fun-7- (call delete/2 with one alias, shortcode and other aliases are gone?)...ok
+  test_emoji: -test_delete/0-fun-3- (call delete/2 with alias to alias)...ok
+  [done in 0.015 s]
+======================= lookup/2 unit test ======================
+  test_emoji: -test_lookup/0-fun-7- (call lookup/2 with non-exist shortcode)...ok
+  test_emoji: -test_lookup/0-fun-5- (call lookup/2 with exist shortcode)...ok
+  test_emoji: -test_lookup/0-fun-3- (call lookup/2 with alias to shortcode)...ok
+  test_emoji: -test_lookup/0-fun-1- (call lookup/2 with alias to alias)...ok
+  [done in 0.012 s]
+======================= analytics/5 unit test ======================
+  test_emoji: -test_analytics/0-fun-21- (call analytics/5 add a function to a non-exist shortcode)...ok
+  test_emoji: -test_analytics/0-fun-18- (call analytics/5 add a function to a exist shortcode)...ok
+  test_emoji: -test_analytics/0-fun-15- (call analytics/5 add two functions with different label)...ok
+  test_emoji: -test_analytics/0-fun-10- (error call analytics/5 add two functions with same label)...ok
+  test_emoji: -test_analytics/0-fun-5- (call analytics/5 add a functions with alias to shortcode)...ok
+  test_emoji: -test_analytics/0-fun-2- (call analytics/5 add a functions with alias to alias)...ok
+  [done in 0.018 s]
+======================= analytics/5 unit test ======================
+  test_emoji: -test_get_analytics/0-fun-12- (error call get_alaytics/2 with non-exist shortcode)...ok
+  test_emoji: -test_get_analytics/0-fun-10- (call get_alaytics/2 with a exist shortcode which is not register function)...ok
+  test_emoji: -test_get_analytics/0-fun-8- (call get_alaytics/2 with a exist shortcode)...ok
+  test_emoji: -test_get_analytics/0-fun-5- (call get_alaytics/2 with a alias to shortcode)...ok
+  test_emoji: -test_get_analytics/0-fun-2- (call get_alaytics/2 with a alias to alias)...ok
+  [done in 0.015 s]
+======================= analytics/5 unit test ======================
+  test_emoji: -test_remove_analytics/0-fun-9- (call remove_analytics/3 a non-exist shortcode)...ok
+  test_emoji: -test_remove_analytics/0-fun-7- (call remove_analytics/3 a exist shortcode but does not have functions)...ok
+  test_emoji: -test_remove_analytics/0-fun-5- (call remove_analytics/3 a exist shortcode which have functions)...ok
+  test_emoji: -test_remove_analytics/0-fun-2- (call remove_analytics/3 label is not exist)...ok
+  [done in 0.012 s]
+======================= analytics/5 unit test ======================
+  test_emoji: -test_stop/0-fun-1- (call stop/1 )...ok
+  [done in 0.003 s]
+=======================================================
+  All 36 tests passed.

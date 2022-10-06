@@ -1,0 +1,33 @@
+name: boa
+
+# The packages we (may) depend on
+dependencies:
+  - base             # For built-in functions like `length`
+  - containers       # For Data.Map, etc., if needed
+  # For assignment 2, don't add anything else here
+
+# The BoaInterp library
+library:
+  source-dirs: src
+  ghc-options:
+    - -W
+  exposed-modules:
+    - BoaAST
+    - BoaInterp
+
+executable:
+  source-dirs:
+    - src
+    - app
+  main: Main.hs
+
+# Sample test suite
+tests:
+  my-test-suite:
+    main: Test.hs
+    source-dirs: tests
+    dependencies: # not all may be relevant
+      - boa
+      - tasty
+      - tasty-hunit
+      # You may add other LTS packages here, if really appropriate

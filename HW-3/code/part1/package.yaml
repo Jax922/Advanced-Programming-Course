@@ -1,0 +1,17 @@
+name: warmup
+
+# The packages we (may) depend on
+dependencies:
+  - base             # For built-in functions like `length`
+  - containers       # For Data.Map, etc., if needed
+  - parsec           # If needed; ReadP is already part of base
+  # For assignment 3, don't add anything else
+
+# The Warmup library
+library:
+  source-dirs: src
+  ghc-options:
+    - -W
+  exposed-modules:
+    - WarmupReadP
+    - WarmupParsec
