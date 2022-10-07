@@ -1,0 +1,112 @@
+
+
+Checking submission...
+=====================
+You have a code/part1/src/async.erl. Good.
+You have a code/part2/src/emoji.erl. Good.
+You have a code/part2/tests/test_emoji.erl. Good.
+
+You have a code/timesheet.txt. Good.
+  Timesheet looks OK
+
+Warning:
+  Please do not include ./__MACOSX.
+
+
+Building warmup async...
+========================
+async.erl: OK
+
+
+Checking async API...
+======================
+OK
+
+
+Testing async
+==============
+
+Simple tests
+    N =:= wait(new(fun(X) -> X end, N)):  ... OK  [0.058 s] 
+    A = new(fun(X) -> throw(X+1) end, N), N+1 =:= try wait(A), ups catch E -> E end:  ... OK  [0.051 s] 
+    A = new(fun never_returns/0, 42), nothing =:= poll(A):  ... OK  
+    A = new(fun(X) -> X end, N), N =:= wait(A), wait(A) =:= wait(A):  ... OK  [0.051 s] 
+    A = new(fun(X) -> X+1 end, N), N+1 =:= wait(A), {ok, wait(A)} =:= poll(A):  ... OK  [0.051 s] 
+    [done in 0.226 s]
+
+Concurrency tests
+    E = async:new(fun(X) -> X end, 5), F = async:new(fun(X) -> X end, 5), G = async:new(fun Loop(X) -> Loop(X) end, 5), 5 =:= async:wait(F):  ... OK  [0.051 s] 
+    One process creates the action, another waits for it:  ... OK  [0.051 s] 
+    More intricate testing of poll and wait:  ... OK  [0.051 s] 
+    [done in 0.054 s]
+
+Finished in 0.283 seconds
+8 tests, 0 failures
+
+
+Building emoji
+--------------------
+emoji.erl: OK
+love_emoji.erl: OK
+
+
+Checking Emoji API
+========================
+OK
+
+
+Type checking Erlang files with dialyzer
+=========================================
+  Proceeding with analysis... done in 0m0.51s
+done (passed successfully)
+
+
+Testing Emoji server
+======================
+
+Start tests
+    Sanity check: starting an emoji server and stopping it.:  ... OK  [0.006 s] 
+    Starting two servers and stopping them:  ... OK  [0.006 s] 
+    [done in 0.010 s]
+
+Basic functionality (starting and stopping a server for each test)
+    Register smiley emoji three times:  ... OK  
+    Register smiley emoji and look it up:  ... OK  [0.004 s] 
+    Register smiley emoji, delete it and check that it is gone:  ... OK  
+    Register smiley emoji, make alias and look alias up:  ... OK  
+    Register smiley emoji, make alias to alias and look last alias up:  ... OK  
+    Register smiley emoji, make alias and delete original:  ... OK  
+    Register smiley emoji, make alias and delete original, check that alias is gone:  ... OK  
+    Register smiley emoji, make alias and delete alias, check that both are gone:  ... OK  
+    Register emoji, make multiple aliases, delete one and check that all are gone:  ... OK  
+    [done in 0.033 s]
+
+Analytics (where `Hit = fun(_, N) -> N+1 end` and `Last = fun (S, _) -> S end`) 
+    Register Hit two times:  ... OK  
+    Register Hit and check that it works:  ... OK  
+    Register Hit and Last and check that they work (no aliases):  ... OK  
+    Register Hit and Last and check that they work with aliases:  ... *FAILED*
+    Register Hit and Last and check that they work with multiple aliases:  ... OK  
+    Register Hit and Last and remove them:  ... OK  
+    Register Hit and remove it for multiple aliases:  ... OK  
+    [done in 0.025 s]
+
+Scale tests with more realistic amount of emojis
+    Start with medium sized initial list and look up a few emoji:  ... OK  [0.030 s] 
+    Start with medium sized initial list and add Hit analytics for all:  ... OK  [0.166 s] 
+    Add large(r) list of emoji individually, and then add Hit analytics:  ... OK  [0.969 s] 
+    [done in 0.972 s]
+
+Tests for tricky corner cases
+    Register two shortcodes for the same emoji, no alias:  ... OK  
+    T <- X <- Y /\ T <- A <- B (arrow is 'alias of'), delete Y:  ... OK  
+    Alias to self:  ... OK  
+    Alias chain to self:  ... OK  
+    Register Hit and `Throw = (fun(S, _) -> throw(S) end)` and check that they work
+submission/check-files.sh FAILED
+dynamic/run-tests.sh FAILED
+---
+I am not fully satisfied.
+---
+Found a bug? Are the messages too cryptic?
+Let us know on Absalon or Discord.

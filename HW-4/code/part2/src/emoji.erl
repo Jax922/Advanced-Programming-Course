@@ -57,7 +57,7 @@ stop(Eid) ->
         exit: Reason -> {error, Reason}
     end.
 
-%% ================================ emoji server ===========================%%
+%% ================================ message transit process ===========================%%
 request_reply(Eid, Request) ->
     Ref = make_ref(),
     Eid ! {self(), Ref, Request},
@@ -65,6 +65,7 @@ request_reply(Eid, Request) ->
         {_, Response} -> Response
     end.
 
+%% ================================ emoji server ===========================%%
 loop(State) -> 
     receive
         {From, Ref, Request} ->
@@ -85,7 +86,7 @@ handle_call(Request, State) ->
         {remove_analytics_emo, Short, Label} -> remove_analytics_helper(State, Short, Label)
     end.
 
-%% ================================ helper functions for export functions ===========================%%
+%% ================================ helper functions for handling messages ===========================%%
 new_shortcode_helper({EmoList, Alias, Analytics}, Short, Emo) ->
     {NewEmoList, Res}=find_emo(EmoList, Short, Emo),
     {{NewEmoList, Alias, Analytics}, Res}.
@@ -187,7 +188,7 @@ remove_analytics_helper({EmoList, Alias, Analytics}, Short, Label) ->
             {{EmoList, Alias, NewAnalytics}, ok}
     end.
 
- %% ================================  basic function for helper function as above  ===========================%%
+ %% ================================  basic functions for helper function as above  ===========================%%
 
  % find the emoji value by a shortcode
 find_emo(EmoList, Short, Emo) ->
