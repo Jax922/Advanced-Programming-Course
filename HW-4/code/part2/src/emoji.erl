@@ -73,6 +73,7 @@ loop(State) ->
             loop(NewState)
     end .
 
+% handle message from client to invoke different helper functions.
 handle_call(Request, State) ->
     case Request of
         {new, Short, Emo} -> new_shortcode_helper(State, Short, Emo);
@@ -81,8 +82,7 @@ handle_call(Request, State) ->
         {lookup_emo, Short} -> lookup_helper(State, Short);
         {analytics_emo, Short, Fun, Label, Init} -> analytics_helper(State, Short, Fun, Label, Init);
         {get_analytics_emo, Short} -> get_analytics_helper(State, Short);
-        {remove_analytics_emo, Short, Label} -> remove_analytics_helper(State, Short, Label);
-        {get_all} -> {State, State}
+        {remove_analytics_emo, Short, Label} -> remove_analytics_helper(State, Short, Label)
     end.
 
 %% ================================ helper functions for export functions ===========================%%
