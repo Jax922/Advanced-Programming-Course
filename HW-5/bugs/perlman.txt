@@ -1,0 +1,175 @@
+eqc:module(test_bst).
+prop_arbitrary_valid: .....................................................................................................
+OK, passed 101 tests
+prop_insert_valid: .....................................................................................................
+OK, passed 101 tests
+prop_empty_valid: ....................................................................................................
+OK, passed 100 tests
+prop_delete_valid: .....................................................................................................
+OK, passed 101 tests
+prop_union_valid: .....................................................................................................
+OK, passed 101 tests
+prop_insert_post: .....................................................................................................
+OK, passed 101 tests
+prop_delete_post: .....................................................................................................
+OK, passed 101 tests
+prop_union_post: .....................................................................................................
+OK, passed 101 tests
+prop_find_post_present: .....................................................................................................
+OK, passed 101 tests
+prop_find_post_absent: .....................................................................................................
+OK, passed 101 tests
+prop_size_insert: .....................................................................................................
+OK, passed 101 tests
+prop_size_delete: .....................................................................................................
+OK, passed 101 tests
+prop_size_union: ....................................................................................................
+OK, passed 100 tests
+prop_insert_insert: ....................................................................................................
+OK, passed 100 tests
+prop_insert_delete: .....................................................................................................
+OK, passed 101 tests
+prop_insert_union: ....................Failed! After 20 tests.
+{f,-1,
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]},
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{d,4},{f,3}]]}}
+   [{d, 4}, {f, -1}] /= [{d, 4}, {f, 3}]
+Shrinking xxxxx.xxx..xxxxxx..xxxxxxx..xxxxxxxxxxxxxxxx(7 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,insert,
+             [a,0,{a,0}],
+             [{file,"solution/code/mystery/versions/perlman/bst.erl"},
+              {line,43}]},
+         {test_bst,'-prop_insert_union/0-fun-0-',1,
+             [{file,"test_bst.erl"},{line,147}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,0,
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]},
+   {a,0}}
+prop_delete_insert: .....................................................................................................
+OK, passed 101 tests
+prop_delete_delete: ....................................................................................................
+OK, passed 100 tests
+prop_delete_union: .........................Failed! After 25 tests.
+{d,{call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{g,5}]]},
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{d,2},{g,-1}]]}}
+   [{g, -1}] /= [{g, 5}]
+Shrinking xxxxxxxxxx.xxxxxx...xxxxxxxxxxxxx(4 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,delete,
+             [a,{g,0}],
+             [{file,"solution/code/mystery/versions/perlman/bst.erl"},
+              {line,51}]},
+         {test_bst,'-prop_delete_union/0-fun-0-',1,
+             [{file,"test_bst.erl"},{line,180}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,{g,0},
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+prop_union_insert: .............................Failed! After 29 tests.
+{b,b,7,-2,
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{a,-1},{b,-1}]]}}
+   [{a, -1}, {b, -2}] /= [{a, -1}, {b, 7}]
+Shrinking .x..xxx.xx.xxx..xxxxxxxx(7 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,insert,
+             [a,0,{a,0}],
+             [{file,"solution/code/mystery/versions/perlman/bst.erl"},
+              {line,43}]},
+         {test_bst,'-prop_union_insert/0-fun-0-',1,
+             [{file,"test_bst.erl"},{line,198}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,a,0,0,{a,0}}
+prop_union_delete: ................................................Failed! After 48 tests.
+{f,{call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{c,15}]]},
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,
+          {call,bst,empty,[]},
+          [{f,0},{a,-2},{a,15},{c,9}]]}}
+   [{a, 15}, {c, 9}] /= [{a, 15}, {c, 15}]
+Shrinking xxxxxxxx.xx...xxxxx(4 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,to_sorted_list,
+             [{c,0}],
+             [{file,"solution/code/mystery/versions/perlman/bst.erl"},
+              {line,85}]},
+         {test_bst,obs_equals,2,[{file,"test_bst.erl"},{line,121}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,{c,0},
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+prop_union_union: ......................Failed! After 22 tests.
+{{call,lists,foldl,
+       [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{h,-4},{h,-3}]]},
+ {call,lists,foldl,
+       [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{d,0},{g,1}]]},
+ {call,lists,foldl,
+       [#Fun<test_bst.28.127627523>,
+        {call,bst,empty,[]},
+        [{d,-6},{h,2},{c,1}]]}}
+   [{c, 1}, {d, 0}, {g, 1}, {h, 2}]
+/=
+   [{c, 1}, {d, 0}, {g, 1}, {h, -3}]
+Shrinking x.xxxxxxx.xxxxxxx...xxxxxxxxxxxxxxx(5 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,to_sorted_list,
+             [{h,0}],
+             [{file,"solution/code/mystery/versions/perlman/bst.erl"},
+              {line,85}]},
+         {test_bst,obs_equals,2,[{file,"test_bst.erl"},{line,121}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{{h,0},
+ {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]},
+ {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+prop_insert_model: ....................................................................................................
+OK, passed 100 tests
+prop_find_model: .....................................................................................................
+OK, passed 101 tests
+prop_empty_model: .....................................................................................................
+OK, passed 101 tests
+prop_delete_model: ....................................................................................................
+OK, passed 100 tests
+prop_union_model: ...............................Failed! After 31 tests.
+{{call,lists,foldl,
+       [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{d,4},{h,-4},{c,2}]]},
+ {call,lists,foldl,
+       [#Fun<test_bst.28.127627523>,
+        {call,bst,empty,[]},
+        [{c,2},{c,-5},{e,-7}]]}}
+   [{c, -5}, {d, 4}, {e, -7}, {h, -4}]
+/=
+   [{c, 2}, {d, 4}, {e, -7}, {h, -4}]
+Shrinking xxxx.xxx...x.xxxxx.xxxxxxxxxx..xxxxxxxxxxxxxxxxxxxxxxx(8 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,to_sorted_list,
+             [{d,0}],
+             [{file,"solution/code/mystery/versions/perlman/bst.erl"},
+              {line,85}]},
+         {test_bst,'-prop_union_model/0-fun-1-',1,
+             [{file,"test_bst.erl"},{line,247}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{{d,0},
+ {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+[prop_insert_union,prop_delete_union,prop_union_insert,
+ prop_union_delete,prop_union_union,prop_union_model]

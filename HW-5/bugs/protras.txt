@@ -1,0 +1,204 @@
+eqc:module(test_bst).
+prop_arbitrary_valid: .....................................................................................................
+OK, passed 101 tests
+prop_insert_valid: .....................................................................................................
+OK, passed 101 tests
+prop_empty_valid: ......................................................................................................
+OK, passed 102 tests
+prop_delete_valid: ....................................................................................................
+OK, passed 100 tests
+prop_union_valid: ........................Failed! After 24 tests.
+{{call,lists,foldl,
+       [#Fun<test_bst.28.127627523>,
+        {call,bst,empty,[]},
+        [{d,2},{a,-7},{c,-2}]]},
+ {call,lists,foldl,
+       [#Fun<test_bst.28.127627523>,
+        {call,bst,empty,[]},
+        [{h,-7},{a,2},{e,-3}]]}}
+Shrinking x.....x(5 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,valid,
+             [{a,0}],
+             [{file,"solution/code/mystery/versions/poitras/bst.erl"},
+              {line,20}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{{a,0},
+ {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+prop_insert_post: .....................................................................................................
+OK, passed 101 tests
+prop_delete_post: ....................................................................................................
+OK, passed 100 tests
+prop_union_post: .................................................................Failed! After 65 tests.
+{f,a,-12,
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,
+          {call,bst,empty,[]},
+          [{g,-11},{f,17},{g,-17},{e,-10},{a,-5},{b,18}]]}}
+   nothing /= {found, -5}
+Shrinking x...xxxx.x.xxx.x.xx.xxxxxx..xxxxxxxxxxxxxxxxx(10 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,union,
+             [{branch,leaf,a,0,leaf},{c,0}],
+             [{file,"solution/code/mystery/versions/poitras/bst.erl"},
+              {line,65}]},
+         {test_bst,'-prop_union_post/0-fun-0-',1,
+             [{file,"test_bst.erl"},{line,85}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,a,0,{c,0}}
+prop_find_post_present: .....................................................................................................
+OK, passed 101 tests
+prop_find_post_absent: .....................................................................................................
+OK, passed 101 tests
+prop_size_insert: ....................................................................................................
+OK, passed 100 tests
+prop_size_delete: .....................................................................................................
+OK, passed 101 tests
+prop_size_union: .....................................................................................................
+OK, passed 101 tests
+prop_insert_insert: .....................................................................................................
+OK, passed 101 tests
+prop_insert_delete: .....................................................................................................
+OK, passed 101 tests
+prop_insert_union: ....Failed! After 4 tests.
+{c,0,
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{g,-1}]]},
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{d,0}]]}}
+   [{c, 0}, {d, 0}, {g, -1}] /= [{d, 0}, {c, 0}, {g, -1}]
+Shrinking .xxx.xx.xxxx..xxxxxxxxx(5 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,insert,
+             [a,0,{e,0}],
+             [{file,"solution/code/mystery/versions/poitras/bst.erl"},
+              {line,43}]},
+         {test_bst,'-prop_insert_union/0-fun-0-',1,
+             [{file,"test_bst.erl"},{line,147}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,0,
+   {e,0},
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+prop_delete_insert: .....................................................................................................
+OK, passed 101 tests
+prop_delete_delete: .....................................................................................................
+OK, passed 101 tests
+prop_delete_union: .....................Failed! After 21 tests.
+{h,{call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{h,5},{d,5}]]},
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{f,-3}]]}}
+   [{f, -3}, {d, 5}] /= [{d, 5}, {f, -3}]
+Shrinking xxxx.xxxxx.xxxx.xxxxxxxxx.xxxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx(7 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,delete,
+             [a,{g,0}],
+             [{file,"solution/code/mystery/versions/poitras/bst.erl"},
+              {line,51}]},
+         {test_bst,'-prop_delete_union/0-fun-0-',1,
+             [{file,"test_bst.erl"},{line,180}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,{g,0},
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+prop_union_insert: ....Failed! After 4 tests.
+{d,c,-1,1,
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{e,1}]]}}
+   [{d, -1}, {c, 1}, {e, 1}] /= [{c, 1}, {d, -1}, {e, 1}]
+Shrinking ....xx...x.(8 times)
+Reason:
+{'EXIT',{function_clause,[{bst,insert,
+                               [a,0,{b,0}],
+                               [{file,"solution/code/mystery/versions/poitras/bst.erl"},
+                                {line,43}]},
+                          {test_bst,'-prop_union_insert/0-fun-0-',1,
+                                    [{file,"test_bst.erl"},{line,198}]}]}}
+{a,a,0,0,{b,0}}
+prop_union_delete: ..........................................Failed! After 42 tests.
+{c,{call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{e,2}]]},
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,
+          {call,bst,empty,[]},
+          [{h,-6},{b,-4},{h,3},{c,7},{e,1}]]}}
+   [{e, 2}, {b, -4}, {e, 1}, {h, 3}]
+/=
+   [{e, 2}, {b, -4}, {c, 7}, {e, 1}, {h, 3}]
+Shrinking x.xx...x...xxx(7 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,to_sorted_list,
+             [{b,0}],
+             [{file,"solution/code/mystery/versions/poitras/bst.erl"},
+              {line,73}]},
+         {test_bst,obs_equals,2,[{file,"test_bst.erl"},{line,121}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,{b,0},
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+prop_union_union: ....Failed! After 4 tests.
+{{call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{g,-1}]]},
+ {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{d,0}]]},
+ {call,lists,foldl,
+       [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{e,-1}]]}}
+   [{d, 0}, {e, -1}, {g, -1}] /= [{d, 0}, {g, -1}, {e, -1}]
+Shrinking xxxx.xx.xx.xx...xxxxxxxxxx(6 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,to_sorted_list,
+             [{e,0}],
+             [{file,"solution/code/mystery/versions/poitras/bst.erl"},
+              {line,73}]},
+         {test_bst,obs_equals,2,[{file,"test_bst.erl"},{line,121}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{{e,0},
+ {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]},
+ {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+prop_insert_model: .....................................................................................................
+OK, passed 101 tests
+prop_find_model: .....................................................................................................
+OK, passed 101 tests
+prop_empty_model: .............................................................................................................
+OK, passed 109 tests
+prop_delete_model: .....................................................................................................
+OK, passed 101 tests
+prop_union_model: ...................Failed! After 19 tests.
+{{call,lists,foldl,
+       [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{g,-3},{e,3}]]},
+ {call,lists,foldl,
+       [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{f,0},{a,4}]]}}
+   [{a, 4}, {f, 0}, {e, 3}, {g, -3}]
+/=
+   [{a, 4}, {e, 3}, {f, 0}, {g, -3}]
+Shrinking xx.....xx(5 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,to_sorted_list,
+             [{a,0}],
+             [{file,"solution/code/mystery/versions/poitras/bst.erl"},
+              {line,73}]},
+         {test_bst,'-prop_union_model/0-fun-1-',1,
+             [{file,"test_bst.erl"},{line,247}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{{a,0},
+ {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+[prop_union_valid,prop_union_post,prop_insert_union,
+ prop_delete_union,prop_union_insert,prop_union_delete,
+ prop_union_union,prop_union_model]

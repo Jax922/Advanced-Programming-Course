@@ -1,0 +1,143 @@
+eqc:module(test_bst).
+prop_arbitrary_valid: .....................................................................................................
+OK, passed 101 tests
+prop_insert_valid: ....................................................................................................
+OK, passed 100 tests
+prop_empty_valid: .....................................................................................................
+OK, passed 101 tests
+prop_delete_valid: .....................................................................................................
+OK, passed 101 tests
+prop_union_valid: .....................................................................................................
+OK, passed 101 tests
+prop_insert_post: .....................................................................................................
+OK, passed 101 tests
+prop_delete_post: .......Failed! After 7 tests.
+{a,f,
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{f,-2}]]}}
+   nothing /= {found, -2}
+Shrinking xxxxxxxxxxx.xxxxx..xxxxxxxxxxx(3 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,delete,
+             [a,{f,0}],
+             [{file,"solution/code/mystery/versions/snyder/bst.erl"},
+              {line,51}]},
+         {test_bst,'-prop_delete_post/0-fun-0-',1,
+             [{file,"test_bst.erl"},{line,76}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,a,{f,0}}
+prop_union_post: ....................................................................................................
+OK, passed 100 tests
+prop_find_post_present: .....................................................................................................
+OK, passed 101 tests
+prop_find_post_absent: .....................................................................................................
+OK, passed 101 tests
+prop_size_insert: ....................................................................................................
+OK, passed 100 tests
+prop_size_delete: .....................................................................................................
+OK, passed 101 tests
+prop_size_union: .....................................................................................................
+OK, passed 101 tests
+prop_insert_insert: .....................................................................................................
+OK, passed 101 tests
+prop_insert_delete: Failed! After 1 tests.
+{f,a,0,
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+   [{f, 0}] /= []
+Shrinking x..(2 times)
+{b,a,0,
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+   [{b, 0}] /= []
+prop_insert_union: .....................................................................................................
+OK, passed 101 tests
+prop_delete_insert: Failed! After 1 tests.
+{f,a,0,
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+   [] /= [{f, 0}]
+Shrinking x..(2 times)
+{b,a,0,
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+   [] /= [{b, 0}]
+prop_delete_delete: ................................................Failed! After 48 tests.
+{f,b,
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,
+          {call,bst,empty,[]},
+          [{f,-5},{b,-2},{e,6}]]}}
+   [] /= [{e, 6}]
+Shrinking xxx.xxxxx.xx.x..xxxx...xxxxx..x...xxx.(14 times)
+Reason:
+{'EXIT',{function_clause,[{bst,delete,
+                               [a,{a,0}],
+                               [{file,"solution/code/mystery/versions/snyder/bst.erl"},
+                                {line,51}]},
+                          {test_bst,'-prop_delete_delete/0-fun-0-',1,
+                                    [{file,"test_bst.erl"},{line,171}]}]}}
+{a,a,{a,0}}
+prop_delete_union: ....Failed! After 4 tests.
+{e,{call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{a,1}]]},
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{c,-1}]]}}
+   [] /= [{a, 1}, {c, -1}]
+Shrinking x...x....x(7 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,delete,
+             [a,{a,0}],
+             [{file,"solution/code/mystery/versions/snyder/bst.erl"},
+              {line,51}]},
+         {test_bst,'-prop_delete_union/0-fun-0-',1,
+             [{file,"test_bst.erl"},{line,180}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,{call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]},
+   {a,0}}
+prop_union_insert: .....................................................................................................
+OK, passed 101 tests
+prop_union_delete: ....Failed! After 4 tests.
+{a,{call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{c,-1}]]},
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{g,1}]]}}
+   [{c, -1}] /= [{c, -1}, {g, 1}]
+Shrinking .xx...x.(5 times)
+Reason:
+{'EXIT',{function_clause,[{bst,delete,
+                               [a,{b,0}],
+                               [{file,"solution/code/mystery/versions/snyder/bst.erl"},
+                                {line,51}]},
+                          {test_bst,'-prop_union_delete/0-fun-0-',1,
+                                    [{file,"test_bst.erl"},{line,207}]}]}}
+{a,{call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]},
+   {b,0}}
+prop_union_union: .....................................................................................................
+OK, passed 101 tests
+prop_insert_model: .....................................................................................................
+OK, passed 101 tests
+prop_find_model: ....................................................................................................
+OK, passed 100 tests
+prop_empty_model: .....................................................................................................
+OK, passed 101 tests
+prop_delete_model: ......Failed! After 6 tests.
+{c,{call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{f,1}]]}}
+   [] /= [{f, 1}]
+Shrinking .xx...x.(5 times)
+Reason:
+{'EXIT',{function_clause,[{bst,delete,
+                               [a,{b,0}],
+                               [{file,"solution/code/mystery/versions/snyder/bst.erl"},
+                                {line,51}]},
+                          {test_bst,'-prop_delete_model/0-fun-0-',1,
+                                    [{file,"test_bst.erl"},{line,242}]}]}}
+{a,{b,0}}
+prop_union_model: ....................................................................................................
+OK, passed 100 tests
+[prop_delete_post,prop_insert_delete,prop_delete_insert,
+ prop_delete_delete,prop_delete_union,prop_union_delete,
+ prop_delete_model]

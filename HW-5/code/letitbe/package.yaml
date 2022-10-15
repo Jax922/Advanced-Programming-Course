@@ -1,0 +1,41 @@
+name: letitbe
+
+# The packages we (may) depend on
+dependencies:
+  - base             # For built-in functions like `length`
+  - containers       # For Data.Map, etc., if needed
+  - text             # For Data.Text, if needed
+  - tasty            # The test framework tasty
+  - tasty-hunit      # unit-testing with tasty
+  - tasty-quickcheck # property-testing with tasty
+  - QuickCheck       # What is says
+  # For assignment 5, you should need to add anything more
+
+# The Expr libraries
+library:
+  source-dirs: src
+  exposed-modules:
+    - ExprAst
+    - ExprEval
+
+# No stand-alone executable to build
+# executable:
+#   source-dirs:
+#     - src
+#     - app
+#   main: Main.hs
+
+# Sample test suite
+tests:
+  my-test-suite:
+    main: Test.hs
+    source-dirs: tests
+    exposed-modules:
+      - ExprProperties
+      - Test
+    dependencies:
+      - letitbe
+      - tasty
+      - tasty-hunit
+      - tasty-quickcheck # property-testing with tasty
+      - QuickCheck       # What is says

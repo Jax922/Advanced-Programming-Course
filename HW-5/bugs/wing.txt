@@ -1,0 +1,125 @@
+eqc:module(test_bst).
+prop_arbitrary_valid: ....................................................................................................
+OK, passed 100 tests
+prop_insert_valid: .....................................................................................................
+OK, passed 101 tests
+prop_empty_valid: ....................................................................................................
+OK, passed 100 tests
+prop_delete_valid: .....................................................................................................
+OK, passed 101 tests
+prop_union_valid: .....................................................................................................
+OK, passed 101 tests
+prop_insert_post: ..........Failed! After 10 tests.
+{e,h,-2,
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{h,3}]]}}
+   nothing /= {found, 3}
+Shrinking .xxxxxxx.xxxxxxxx.xxxxxxx.x..xxxx..xxx.x(9 times)
+Reason:
+{'EXIT',{function_clause,[{bst,find,
+                               [b,{b,0}],
+                               [{file,"solution/code/mystery/versions/wing/bst.erl"},
+                                {line,33}]},
+                          {test_bst,'-prop_insert_post/0-fun-0-',1,
+                                    [{file,"test_bst.erl"},{line,70}]}]}}
+{a,b,0,{b,0}}
+prop_delete_post: .....................................................................................................
+OK, passed 101 tests
+prop_union_post: .....................................................................................................
+OK, passed 101 tests
+prop_find_post_present: .....................................................................................................
+OK, passed 101 tests
+prop_find_post_absent: .....................................................................................................
+OK, passed 101 tests
+prop_size_insert: .....................................................................................................
+OK, passed 101 tests
+prop_size_delete: .....................................................................................................
+OK, passed 101 tests
+prop_size_union: .....................................................................................................
+OK, passed 101 tests
+prop_insert_insert: Failed! After 1 tests.
+{b,d,0,0,
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+   [{b, 0}] /= [{d, 0}]
+Shrinking .x..(3 times)
+{a,b,0,0,
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]}}
+   [{a, 0}] /= [{b, 0}]
+prop_insert_delete: .....................................................................................................
+OK, passed 101 tests
+prop_insert_union: ....Failed! After 4 tests.
+{c,-1,
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]},
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{f,-1}]]}}
+   [{c, -1}] /= [{c, -1}, {f, -1}]
+Shrinking ..xx...x.(6 times)
+Reason:
+{'EXIT',{function_clause,[{bst,below,
+                               [a,{b,0}],
+                               [{file,"solution/code/mystery/versions/wing/bst.erl"},
+                                {line,66}]},
+                          {bst,union,2,
+                               [{file,"solution/code/mystery/versions/wing/bst.erl"},
+                                {line,63}]},
+                          {test_bst,'-prop_insert_union/0-fun-0-',1,
+                                    [{file,"test_bst.erl"},{line,148}]}]}}
+{a,0,
+   {call,lists,foldl,[#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[]]},
+   {b,0}}
+prop_delete_insert: ..........................................................Failed! After 58 tests.
+{c,c,8,
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,
+          {call,bst,empty,[]},
+          [{e,13},{g,19},{h,-15},{b,10}]]}}
+   [] /= [{b, 10}]
+Shrinking xxxx.x......x(7 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,find,
+             [a,{a,0}],
+             [{file,"solution/code/mystery/versions/wing/bst.erl"},{line,33}]},
+         {test_bst,'-prop_delete_insert/0-fun-0-',1,
+             [{file,"test_bst.erl"},{line,157}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,a,0,{a,0}}
+prop_delete_delete: .....................................................................................................
+OK, passed 101 tests
+prop_delete_union: ....................................................................................................
+OK, passed 100 tests
+prop_union_insert: .....................................................................................................
+OK, passed 101 tests
+prop_union_delete: .....................................................................................................
+OK, passed 101 tests
+prop_union_union: ....................................................................................................
+OK, passed 100 tests
+prop_insert_model: .....Failed! After 5 tests.
+{h,0,
+   {call,lists,foldl,
+         [#Fun<test_bst.28.127627523>,{call,bst,empty,[]},[{f,0}]]}}
+   [{h, 0}] /= [{f, 0}, {h, 0}]
+Shrinking .xx...(4 times)
+Reason:
+{'EXIT',
+    {function_clause,
+        [{bst,to_sorted_list,
+             [{b,0}],
+             [{file,"solution/code/mystery/versions/wing/bst.erl"},{line,75}]},
+         {test_bst,'-prop_insert_model/0-fun-0-',1,
+             [{file,"test_bst.erl"},{line,230}]},
+         {eqc_lazy_lists,lazy_safe_map,2,
+             [{file,"eqc-1.46.0/src/eqc_lazy_lists.erl"},{line,39}]}]}}
+{a,0,{b,0}}
+prop_find_model: .....................................................................................................
+OK, passed 101 tests
+prop_empty_model: ....................................................................................................
+OK, passed 100 tests
+prop_delete_model: ....................................................................................................
+OK, passed 100 tests
+prop_union_model: .....................................................................................................
+OK, passed 101 tests
+[prop_insert_post,prop_insert_insert,prop_insert_union,
+ prop_delete_insert,prop_insert_model]

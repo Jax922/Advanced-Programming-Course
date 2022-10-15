@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="By Ken Friis Larsen (kflarsen@diku.dk)" />
+  <title>Let It Be – Mystery</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Source+Serif+Pro|Oswald|Source+Code+Pro" />
+  <style>
+  body {
+      margin-top: 1.0em;
+      background-color: white;
+  /*    font-family: 'Gentium Book Basic', sans-serif;
+     font-size: 1.143em;
+  */    font-size: 13pt;
+      color: black;
+      width: 90%;
+      margin: 0 auto;
+  }
+
+  html {
+    font-family: "Source Serif Pro", Georgia, "Times New Roman", serif;
+  }
+
+  h2, h3, h4, h5, h6 {
+    font-family: "Oswald", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: #313131;
+    letter-spacing: -.025rem;
+  }
+
+  code {
+     font-family: "Source Code Pro", Menlo, monospace;
+  /*   font-size: 1.136em;
+      font-size: 13pt;;
+  */   background-color: #F0F3F3;
+
+  }
+
+  pre {
+     background-color: #F0F3F3;
+     padding: 6px;
+     word-wrap: break-word;
+     white-space: pre-wrap;
+     font-family: "Source Code Pro", Menlo, monospace;
+     border: 1px solid silver;
+  /*    font-size: 15pt;
+  */}
+
+  h1 {
+      font-family: "Oswald", Helvetica, Arial, sans-serif;
+  }
+
+  h1.title {
+      text-align: left;
+      /*font-size: 3.8em;
+      */color: black; margin-bottom: 3px;
+  }
+  h1 .small { font-size: 0.4em; }
+  h1 a { text-decoration: none }
+  h2 { font-size: 1.5em; color: black; }
+  h2.author { font-size: 1em; text-align: center; color: black; }
+  h3.date {  font-size: 1em; text-align: center; color: black; }
+  a { color: black; }
+  .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+  .download { float: right; }
+  /* pre { background: #000; color: #fff; padding: 15px;} */
+  hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+  .footer { text-align:center; padding-top:30px; font-style: italic; }
+  table   { border-collapse: collapse }
+  td { border: 1px solid black }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Let It Be – Mystery</h1>
+<p class="author">By Ken Friis Larsen
+<code>(kflarsen@diku.dk)</code></p>
+<p class="date">Last revision: October 6, 2021</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#the-big-picture" id="toc-the-big-picture">The Big
+Picture</a></li>
+<li><a href="#let-it-be" id="toc-let-it-be">Let It Be</a>
+<ul>
+<li><a href="#your-tasks" id="toc-your-tasks">Your tasks</a></li>
+<li><a href="#what-to-hand-in-for-this-part"
+id="toc-what-to-hand-in-for-this-part">What to hand in for this
+part</a></li>
+</ul></li>
+<li><a href="#a-quickcheck-mystery" id="toc-a-quickcheck-mystery">A
+QuickCheck Mystery</a>
+<ul>
+<li><a href="#setup" id="toc-setup">Setup</a></li>
+<li><a href="#writing-properties-for-bst"
+id="toc-writing-properties-for-bst">Writing Properties for
+<code>bst</code></a></li>
+<li><a href="#your-task-going-symbolic"
+id="toc-your-task-going-symbolic">Your task: Going symbolic</a></li>
+<li><a href="#diagnosing-bugs-with-properties"
+id="toc-diagnosing-bugs-with-properties">Diagnosing Bugs with
+Properties</a></li>
+<li><a href="#what-to-hand-in-for-this-part-1"
+id="toc-what-to-hand-in-for-this-part-1">What to hand in for this
+part</a></li>
+</ul></li>
+<li><a href="#hand-in-instructions-for-the-whole-assignment"
+id="toc-hand-in-instructions-for-the-whole-assignment">Hand-in
+instructions for the whole assignment</a></li>
+<li><a href="#credits" id="toc-credits">Credits</a></li>
+</ul>
+</nav>
+<h1 id="the-big-picture">The Big Picture</h1>
+<p>The objective of this assignment is to gain practical experience with
+QuickCheck in both Haskell and Erlang. The assignment consists of two
+parts: one for Haskell, <em>Let It Be</em>, and one for Erlang, <em>A
+QuickCheck Mystery</em>. The two parts are independent and can be solved
+in any order.</p>
+<h1 id="let-it-be">Let It Be</h1>
+<p>The sub-directory <code>letitbe</code> in the support files,
+<code>code.zip</code>, contains an evaluator and a simplifier for simple
+arithmetic expression with <code>let</code>-bindings. Expressions are
+represented with the following data-types:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="ot">=</span> <span class="dt">Const</span> <span class="dt">Int</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Var</span> <span class="dt">Ident</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Oper</span> <span class="dt">Op</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>          <span class="op">|</span> <span class="dt">Let</span> <span class="dt">Ident</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>          <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>, <span class="dt">Read</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Ident</span> <span class="ot">=</span> <span class="dt">String</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Op</span> <span class="ot">=</span> <span class="dt">Plus</span> <span class="op">|</span> <span class="dt">Minus</span> <span class="op">|</span> <span class="dt">Times</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>, <span class="dt">Read</span>)</span></code></pre></div>
+<p>Defined in the <code>ExprAst.hs</code> file. The evaluator and
+simplifier is in the <code>ExprEval.hs</code> file.</p>
+<p>The file <code>ExprProperties.hs</code> contains a skeleton for
+getting started writing with QuickCheck for <code>Expr</code>s. Finally,
+the file <code>Test.hs</code> contains the beginning of a test setup for
+you.</p>
+<h2 id="your-tasks">Your tasks</h2>
+<ul>
+<li><p>Make <code>Expr</code> an instance of the type-class
+<code>Arbitrary</code> (in the file <code>ExprProperties</code>). That
+is, you should write a generator for arithmetic expressions.</p></li>
+<li><p>Write a property <code>prop_eval_simplify</code> that expresses
+that the simplifier shouldn’t change the meaning of an expression. In
+other words, for a given expression <em>e</em>, if we simplify
+<em>e</em> and then evaluate it, then we should get the same result as
+just evaluating <em>e</em>.</p>
+<p>Use your property to find the simple bug in the simplifier and fix
+it.</p></li>
+<li><p>The current simplifier only performs a simple transformation.
+Namely if the AST contains an operation on two constants, then the
+operation is performed by the simplifier and the <code>Oper</code>-node
+and its two <code>Const</code>-children is transformed into a single
+<code>Const</code>-node.</p>
+<p>Extend the simplifier so that it can perform some more
+transformations. You <em>must</em> implement the following
+transformations:</p>
+<ul>
+<li><p>Expressions containing operation with the constants
+<code>0</code> and <code>1</code> can often be simplified. For instance,
+an expression <em>e</em> multiplied with <code>0</code> can be
+simplified to <code>0</code>.</p></li>
+<li><p>If a <code>let</code> bound variable is not used in the body of a
+<code>let</code>-expression, then the binding can be
+eliminated.</p></li>
+</ul>
+<p>Explain if your extended simplifier needs to make any assumptions
+about the expressions being simplified. If you need to make assumptions,
+you may want to write some new properties and/or need new generator(s)
+and may need a way to choose the different generator(s) (like we did in
+the Morse code example).</p>
+<p>You <em>may</em> extend the simplifier with more transformations.
+Just obey the rule that the simplifier shouldn’t call the
+evaluator.</p></li>
+</ul>
+<h2 id="what-to-hand-in-for-this-part">What to hand in for this
+part</h2>
+<p>Hand in the code updated by the previously described tasks. You must
+have at least one property that’s tested by <code>Test.hs</code>, so
+that we confirm that it works by running <code>stack test</code>.</p>
+<p>In your report you should explain noteworthy decisions regarding your
+generators and properties. If you had to make any assumptions for your
+simplifier, you should explain how these assumptions are reflected in
+the properties and/or generators.</p>
+<p>Finally, you should document if you did anything to check the quality
+of your generators, and explain how we can confirm your findings with
+respect to the quality. For instance, <code>Test.hs</code> may run one
+or more special properties that collects some statistics regarding your
+generators.</p>
+<h1 id="a-quickcheck-mystery">A QuickCheck Mystery</h1>
+<h2 id="setup">Setup</h2>
+<p>The assignment assumes that you have installed QuickCheck for Erlang
+mini. It also assumes that you have downloaded as unpacked the
+accompanying files.</p>
+<p>When you unpack the <code>code.zip</code> file you should have the
+following files (for this sub-task):</p>
+<pre><code>code/mystery/
+├── src
+│   ├── bst.erl
+│   ├── test_bst.erl
+└── versions
+    ├── noether
+    │   └── bst.beam
+    ├── perlman
+    │   └── bst.beam
+    ├── poitras
+    │   └── bst.beam
+    ├── rhodes
+    │   └── bst.beam
+    ├── robinson
+    │   └── bst.beam
+    ├── snyder
+    │   └── bst.beam
+    ├── wilson
+    │   └── bst.beam
+    └── wing
+        └── bst.beam</code></pre>
+<p>The file <code>src/bst.erl</code> contains a correct(?)
+implementation of binary search trees, and <code>src/test_bst.erl</code>
+contains some QuickCheck properties. The <code>bst.beam</code> files in
+the sub-directories of <code>versions</code> contains various buggy
+versions of the <code>bst</code> library, with a different bug in each
+version.</p>
+<p>The overall idea is to first write a QuickCheck test-suite against
+the correct implementation, and then use this test-suite to diagnose
+bugs in the different versions.</p>
+<h2 id="writing-properties-for-bst">Writing Properties for
+<code>bst</code></h2>
+<p>As you write properties so in the following, make sure you test each
+property after you have written it, either by running quickCheck with
+the property as an argument:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode erlang"><code class="sourceCode erlang"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">42</span><span class="op">&gt;</span> <span class="fu">eqc:quickcheck(test_bst:prop_insert_valid()).</span></span></code></pre></div>
+<p>Or by using <code>eqc:module/1</code> to test all the properties in
+the <code>test_bst.erl</code> module:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode erlang"><code class="sourceCode erlang"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">43</span><span class="op">&gt;</span> <span class="fu">eqc:module(</span><span class="ch">test_bst</span><span class="fu">).</span></span></code></pre></div>
+<p>Since you are testing a correct implementation, all the properties
+you write should pass. (If a property fails, you need to correct the
+property, not the code.)</p>
+<p>Here are some suggestion for getting started:</p>
+<ol type="1">
+<li><p><code>test_bst.erl</code> contains a number of ready-made
+properties. Read through them and make sure that you understand (and
+agree with) them. Consider adding comments that explains them in your
+own words. Also try to use <code>int_key/0</code> instead of
+<code>atom_key/0</code>, what changes?</p></li>
+<li><p>complete the <code>prop_find_post_absent/0</code> property in
+then same style as <code>prop_find_post_present/0</code>.</p></li>
+<li><p><code>test_bst.erl</code> contains a validity property for
+<code>insert/3</code>. Add similar properties for <code>empty/0</code>,
+<code>delete/2</code>, and <code>union/2</code>.</p></li>
+<li><p><code>test_bst.erl</code> contains post-condition properties for
+<code>find/2</code> and <code>insert/3</code>. Add post-conditions for
+<code>delete/2</code> and <code>union/2</code>.</p></li>
+<li><p><code>test_bst.erl</code> contains metamorphic properties for
+<code>size</code>/<code>insert</code> and
+<code>insert</code>/<code>insert</code>. Add further metamorphic
+properties to test <code>insert/3</code>, <code>delete/2</code>, and
+<code>union/2</code>.</p></li>
+<li><p><code>test_bst.erl</code> contains a model based property for
+<code>insert/3</code>. Add model-based properties to test
+<code>find/2</code>, <code>empty/0</code>, <code>delete/2</code>, and
+<code>union/2</code>.</p></li>
+</ol>
+<h2 id="your-task-going-symbolic">Your task: Going symbolic</h2>
+<p>The given generator and properties uses raw binary search tress
+rather that symbolic calls. Redo the <code>bst/2</code> generator in
+<code>test_bst.erl</code> to use symbolic calls (and fix the
+properties).</p>
+<h2 id="diagnosing-bugs-with-properties">Diagnosing Bugs with
+Properties</h2>
+<p>Once you are satisfied with your properties, try using them to
+diagnose buggy version. Some bugs are revealed by the original
+<code>test_bst.erl</code> provided, and some slip through. Each of these
+versions can be tested using <code>test_bst.erl</code> from the eshell
+by first unloading (purging) the current loaded <code>bst</code> module
+and then load the desired version to test. For instance, to load the
+<code>noether</code> version use the following commands:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode erlang"><code class="sourceCode erlang"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">45</span><span class="op">&gt;</span> <span class="fu">code:purge(</span><span class="ch">bst</span><span class="fu">).</span>  <span class="co">% to unload current bst module</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">46</span><span class="op">&gt;</span> <span class="fu">code:load_abs(</span><span class="st">&quot;../versions/noether/bst&quot;</span><span class="fu">).</span></span></code></pre></div>
+<p>(assumes that current working directory is <code>src</code>.)</p>
+<ol start="7" type="1">
+<li><p>Run your tests on each of the buggy version, using
+<code>eqc:module(test_bst)</code> after you have loaded the version to
+test. If any version passes all your tests, something is wrong.</p></li>
+<li><p>Which properties are most effective at revealing errors?</p></li>
+<li><p>Use the counterexamples found to diagnose each bug. Which
+properties give the most helpful output? Does it help to use symbolic
+calls?</p></li>
+</ol>
+<p><strong>Hint:</strong> If you have a hard time interpreting the
+output from <code>eqc</code>, you can try to make the printing of
+counterexamples more readable (for you) by using <code>?WHENFAIL</code>,
+<a
+href="http://quviq.com/documentation/eqc/eqc.html#format-2"><code>eqc:format/2</code></a>
+and <a
+href="http://quviq.com/documentation/eqc/eqc_symbolic.html#pretty_print-2"><code>eqc_symbolic:pretty_print/1</code></a>.</p>
+<h2 id="what-to-hand-in-for-this-part-1">What to hand in for this
+part</h2>
+<p>You must hand in your updated <code>test_bst.erl</code>. This file
+should be self-contained so that we can test it with other versions of
+<code>bst</code> (just like you have). We must to be able to run
+<code>eqc:module(test_bst)</code> with your code.</p>
+<p>In your report you should explain noteworthy decisions regarding your
+generators and properties. In particular if you have implemented
+shrinking, or why not. You should show the output from at least one
+failing property and what bug (in what version) that helped you
+identify.</p>
+<p>You should also include a table where you summarise your finding
+regarding which version contains which bug(s).</p>
+<p>Finally, you should document if you did anything to check the quality
+of your generators, and explain how we can confirm your data with
+respect to the quality.</p>
+<h1 id="hand-in-instructions-for-the-whole-assignment">Hand-in
+instructions for the whole assignment</h1>
+<p>You should hand in two things:</p>
+<ol type="1">
+<li><p><em>One</em> short report, <code>report.pdf</code>, that cover
+both parts of the assignment (normally 2–3 pages excluding figures)
+satisfying the requirements given in each part. Including <strong>an
+assessment</strong> of your you work and what this assessment is based
+on. See the generic instructions regarding the report in previous
+assignments.</p></li>
+<li><p>A ZIP archive <code>code.zip</code>, mirroring the structure of
+the handout, containing your timesheet, source code and tests.</p></li>
+</ol>
+<p>To keep your TA happy, follow these simple rules:</p>
+<ol type="1">
+<li>You should comment your code properly, especially if you doubt its
+correctness, or if you think there is a more elegant way to write a
+certain piece of code. A good comment should explain your ideas and
+provide insight.</li>
+<li>Adhere to the restrictions set in the assignment text.</li>
+<li>Describe clearly what parts of the assignment you have solved and if
+there is something you haven’t solved.</li>
+</ol>
+<h1 id="credits">Credits</h1>
+<p>The Erlang part of the assignment is based on a similar exercise set
+for Haskell by John Hughes.</p>
+<hr />
+<p>End of assignment text.</p>
+</body>
+</html>

@@ -5,6 +5,8 @@ __MACOSX
 # vscode
 .vscode
 
+#haskell
+.stack-work
 
 .eunit
 *.o

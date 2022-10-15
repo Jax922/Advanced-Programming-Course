@@ -1,0 +1,124 @@
+stack test                                                          letitbe -> main ?
+/Users/shedong/Documents/CS/AP/AdvacedProgramming/HW-5/code/letitbe/package.yaml: Ignoring unrecognized field $.tests.my-test-suite.exposed-modules
+letitbe-0.0.0: unregistering (local file changes: tests/ExprProperties.hs)
+letitbe> build (lib + test)
+Preprocessing library for letitbe-0.0.0..
+Building library for letitbe-0.0.0..
+Preprocessing test suite 'my-test-suite' for letitbe-0.0.0..
+Building test suite 'my-test-suite' for letitbe-0.0.0..
+[2 of 3] Compiling ExprProperties
+Linking .stack-work/dist/aarch64-osx/Cabal-3.4.1.0/build/my-test-suite/my-test-suite ...
+letitbe> copy/register
+Installing library in /Users/shedong/Documents/CS/AP/AdvacedProgramming/HW-5/code/letitbe/.stack-work/install/aarch64-osx/55b21ce23a6ec1a4d74a057ce028af329bfbb693e38d46316af7a577ba5eec36/9.0.2/lib/aarch64-osx-ghc-9.0.2/letitbe-0.0.0-5QqrxUlRUS19f3VOSNfP42
+Registering library for letitbe-0.0.0..
+letitbe> test (suite: my-test-suite)
+
+Testing expression evaluation and simplification
+  A few unit-tests
+    Eval: 2+2:                                                      OK
+    Eval: let x = 3 in x * x:                                       OK
+    Simplify: x + (2 + 2):                                          OK
+  QuickCheck tests
+    Evaluating a simplified expression does not change its meaning: OK
+      +++ OK, passed 100 tests:
+       2% Const 0
+       1% Const (-1)
+       1% Const (-10)
+       1% Const (-12)
+       1% Const (-13)
+       1% Const (-23)
+       1% Const (-28)
+       1% Const (-4)
+       1% Const (-55)
+       1% Const (-57)
+       1% Const (-61)
+       1% Const (-7)
+       1% Const (-70)
+       1% Const 1
+       1% Const 14
+       1% Const 24
+       1% Const 29
+       1% Const 39
+       1% Const 4
+       1% Const 45
+       1% Const 49
+       1% Const 51
+       1% Const 61
+       1% Const 76
+       1% Let "e" (Oper Times (Const 40) (Const (-3))) (Const (-15))
+       1% Let "geqwaegtvnqqh" (Const 16) (Oper Times (Var "a") (Let "czicsndvjbqxf" (Const (-28)) (Oper Times (Var "rjtlzxhzbkzrpfi") (Var "tjpxajaszafgfvpmrwsxzzbferg"))))
+       1% Let "guxzwtgeduebkzchribissgoeycbk" (Const 38) (Const (-41))
+       1% Let "hgfbdqwjflpojjeajvhzsx" (Let "jskknbhrouiekqyol" (Oper Minus (Let "eitaryryjqtvhglasbkgasvu" (Oper Times (Const (-30)) (Const 29)) (Let "vhbmccvlgrcj" (Const 1) (Const (-11)))) (Let "eansbgvtrzfwpwdhzorrnpj" (Const 4) (Let "qxq" (Const 27) (Const 16)))) (Const 23)) (Var "lg")
+       1% Let "hmkunscuvggpkypqqsnknhvfsjxytrlgrbhnfdtsumfrbqsms" (Oper Minus (Const (-45)) (Const 22)) (Const (-48))
+       1% Let "idreqdiungmxdx" (Const (-4)) (Const 26)
+       1% Let "ikxjwctxrsnpnyqqmmo" (Const (-9)) (Oper Times (Let "b" (Const (-29)) (Const (-13))) (Let "afvfoualckepwuiuopjhuoahc" (Const 1) (Var "eypzkpoaaamwsxyqm")))
+       1% Let "julardtngxonkxtgbjfwlpkkvdbxzt" (Const 41) (Var "e")
+       1% Let "khxqecbgeklyabolyblicvkudkqhiopwoxokidsahfletnpyteqqsybttbpfuxjcdslxlbsuxdteaoz" (Const (-39)) (Const (-26))
+       1% Let "ljzhjgmbpeffglhvvfpkqfpktyvsrgs" (Const (-63)) (Var "zkxfznxhqqftwqahovsdotenrjkijnjtyzqrpulphvlqgxkehrayacilsqcdlhoeuqkstlducglsxa")
+       1% Let "m" (Let "zsbg" (Const 4) (Const (-2))) (Oper Times (Const 2) (Const (-1)))
+       1% Let "msalgtibjpzblqtwjiudtbqjengpexidinbvxfdrfrrzuwgekvjszketwaxnbjoxxrfljbbvrhdkzixy" (Const (-43)) (Oper Plus (Oper Minus (Let "leobosjgslzoucpnvspcdcskymcsqntydjvbydt" (Const (-13)) (Var "dnqlhknwctlgbzgvbpfdxgzfkszcswrtwrvefaaxpvkxpbiweti")) (Oper Minus (Const 73) (Oper Plus (Const (-84)) (Let "sfevdrioefdjrzjfugbxlwmgpiqzsbbtsxjkvbrfz" (Const 53) (Var "fcthomnsvrtildsq"))))) (Var "ovgrrqmuyybbxhyhuleotxifcmlfshbmosnktqjjvvpwadirskmesqqxpqhjaentiwikkshpmqldocqfojufygolvmyzw"))
+       1% Let "neolqnztjf" (Const (-54)) (Const (-4))
+       1% Let "odvjnzjxyqvvtxppuxcjcuoecgshcwkkjywrekbbetvmnvlwqwykzeobpktwyfmgo" (Const (-22)) (Var "siecuhrycplcwhmpwbzdbwabpvazevb")
+       1% Let "pi" (Oper Minus (Oper Times (Oper Plus (Const (-9)) (Const (-3))) (Let "oijb" (Const 2) (Const 7))) (Oper Times (Const 8) (Oper Plus (Const (-4)) (Const 8)))) (Oper Minus (Let "hta" (Let "da" (Const 4) (Const (-8))) (Var "szdgvpzn")) (Let "ucm" (Oper Plus (Const (-10)) (Const 8)) (Var "dryweurho")))
+       1% Let "qwewkdniecfsqtugwynlcvvqyajzunuebnlvtcxikyz" (Const (-50)) (Const (-31))
+       1% Let "rpprxnzpupfaljifewmplqrkknwtlsdu" (Const 15) (Let "mbqmxpcdklxwpugygylef" (Oper Minus (Let "kdwtksc" (Oper Times (Const (-5)) (Oper Times (Const (-31)) (Const (-21)))) (Const 11)) (Oper Minus (Let "dysjwtubaukj" (Let "iivixhbbkoq" (Const (-36)) (Const 10)) (Let "fwhqahhjgzyysbomqforozn" (Const 21) (Const (-28)))) (Const 12))) (Oper Plus (Let "ewmmmjnzdlxqghddhtbcneehhtnou" (Const 34) (Let "flduihsfpkdqaalkyfhcgwhpqcy" (Oper Times (Const (-25)) (Const 3)) (Const (-10)))) (Const (-4))))
+       1% Let "sskppvzjrgscynvcfcsbttnqnnlgljurufveujihhiwwowsxay" (Const 32) (Var "uhaknikenxyjwuppvilombknxzdusrqzveadanzenhkquzonlsyvmwbp")
+       1% Let "stbyb" (Const (-11)) (Oper Plus (Let "ece" (Const 31) (Const (-32))) (Var "awljyspqjqwdupzqwunhtgczvlad"))
+       1% Let "swfndte" (Const (-37)) (Var "qujnnyomtqjhuogldfpzwe")
+       1% Let "tbnlxgbumiqlqxvabw" (Let "hyviiihpwfcqsurqlrwsbxxtktiljwpqvfozvuxsovwcfdwhzimyjic" (Let "kdrcoxhvoherikjalmq" (Const (-69)) (Let "fdkqqisjntibnchrwnazbopgumgnutbkfgzkyepujeutcspyidzxcgbuxmcrrvsdforyync" (Let "uwcfercgfnkhlltmgvpkpp" (Let "keucaczsjrkddjkayxkislipelawbhuowzebbotipsgvvehnyomozrvu" (Let "hppovppgbqh" (Const (-66)) (Const (-49))) (Oper Minus (Const 15) (Const 47))) (Let "uvmcqnlqeulwifbcweodzezorombfugdombgabvvmywtk" (Const (-70)) (Oper Plus (Const (-63)) (Const (-9))))) (Let "dcuujrfjndbkbwtybkjblnmlraxdikwwwexjcqxylus" (Const (-37)) (Let "dcmtrikgtcckdccqbvjrvomuwukgrymmjolfqdifuowviuao" (Const (-83)) (Const (-15)))))) (Oper Plus (Let "xd" (Oper Plus (Oper Minus (Const 60) (Let "ciqdhduovgwzxbwrgfkguqyhsliqnqmonpoqpfkipvqtdttwsqgiwzcxzgqfgriwdrkbahxwxd" (Const (-27)) (Const 21))) (Const (-66))) (Const (-40))) (Oper Times (Const (-4)) (Oper Times (Const (-85)) (Let "vjhmlsovaxpqgbnzynocqbsqaposo" (Let "if" (Const 45) (Const (-74))) (Const 66)))))) (Let "dxfkxhmj" (Const (-60)) (Const 6))
+       1% Let "ttsbvttjlvkjvhikpactqmeyuazsaeuurlyoiuuoyebj" (Const (-13)) (Var "zmr")
+       1% Let "txtrseolpqwiarazdna" (Let "ecqlnjr" (Let "wyr" (Let "mqjmrrsqnspycthlnumljxukvzyfpel" (Oper Minus (Const 21) (Let "pyzunqzid" (Const 16) (Const (-1)))) (Let "mmlinpvqbpvdrhjosjjusffjpdtnirzyokdkvnlogxxslcpp" (Oper Times (Const 43) (Const 38)) (Const 49))) (Let "jiwvfcozupwxfafjyudgsqxmxegzxxeqjhwwcjdnryraetzxj" (Let "fzbcpbgfxhivflxnopmvhytqyviydropfexsy" (Let "cdhqxu" (Const 44) (Const (-1))) (Const (-48))) (Oper Times (Oper Plus (Const 21) (Const 1)) (Let "hrrtupik" (Const 15) (Const (-3)))))) (Let "nkwhydknnsahxoozhtjbbfsfbbvaxyligtyoneaevubw" (Let "fe" (Oper Minus (Const 29) (Const (-51))) (Oper Times (Oper Times (Const (-43)) (Const 49)) (Const 14))) (Let "cjsofiqd" (Let "apjcusviiv" (Let "ubcoutanjbscmiwsqeepfey" (Const (-29)) (Const (-18))) (Oper Minus (Const 16) (Const (-14)))) (Let "kuumevfxog" (Oper Plus (Const 34) (Const 29)) (Oper Plus (Const 48) (Const 39)))))) (Let "youyokyeklmgwouch" (Const (-27)) (Let "y" (Const 33) (Oper Minus (Let "btntqnhghjqsxvgxsz" (Let "fjhlaxjtph" (Const 11) (Const 26)) (Const (-29))) (Let "lmsgpprqrfdgbmbls" (Const 45) (Let "mzveycpwuxzjyyovwurtnofobzvqbffu" (Const (-35)) (Const (-21)))))))
+       1% Let "vfvquoaeiwoalppujcpgtuydnmmqqgyqpdpgahqmlbm" (Let "qhhpzhhaefkuuexnoqywgpfbwpyjtdjhmasfvbqaionjjttm" (Oper Plus (Oper Times (Oper Times (Oper Minus (Const 16) (Const 29)) (Const 7)) (Const 15)) (Const 38)) (Const (-2))) (Let "ouvojilbqecyyftgfnbskqzspxvtcgrfcai" (Let "qwyxpohcjojxwxuqxghnwurpcf" (Const 50) (Const 14)) (Var "juoarbigytxahrpigxqdlulfzwvejrbjf"))
+       1% Let "vhpnmsoxeesenjleokswzmitskvuitknhcdzrzkqyttqrlgixkugbt" (Let "axazbtvzajdxujufejjcptlajlatuiubsijsxnkuelpwni" (Const 13) (Const 54)) (Let "jiirjvngmzkhpmpqtoqduvddoafnoqjeillslcgy" (Const (-19)) (Oper Plus (Let "jvxjinsgldohbjunexwxolsgngjjeepztbjgqcqvsgoezg" (Const 30) (Oper Times (Const 20) (Var "dz"))) (Const 25)))
+       1% Let "wgipryxbp" (Let "b" (Oper Times (Oper Minus (Const 2) (Const 2)) (Oper Plus (Const (-6)) (Const (-11)))) (Oper Plus (Let "ymvyzpbhzeo" (Const (-5)) (Const 9)) (Let "ba" (Const 4) (Const (-4))))) (Oper Minus (Oper Minus (Var "p") (Let "kzkjf" (Const (-10)) (Const (-9)))) (Let "doo" (Const 9) (Let "cxf" (Const 1) (Const (-6)))))
+       1% Let "zrjnllnr" (Let "gmejoiybikda" (Oper Minus (Let "rhvgu" (Const (-4)) (Const 3)) (Oper Minus (Const (-11)) (Const 3))) (Let "rmejwdojfdnf" (Oper Minus (Const (-11)) (Const 9)) (Const 0))) (Let "weiixxrqob" (Let "qgxq" (Const (-6)) (Const (-3))) (Let "gl" (Oper Times (Const 4) (Const (-1))) (Var "n")))
+       1% Oper Minus (Let "hkpyrxhvukprskjfobrxtpmyesxdrkveizfsbztyfpsb" (Oper Minus (Const 46) (Let "riqcibglymgzoodpdmnwcfsskmytfbgiqad" (Oper Plus (Let "alcljzkigyxfhcwbkdutwojhswdjzp" (Const 26) (Const (-50))) (Oper Minus (Const 0) (Const (-39)))) (Const (-11)))) (Oper Plus (Var "yrcezjyitqviorltzkirhioxdbbhagczrbgqjnkynk") (Oper Times (Let "wnwumxefxzflhswnypcsiepocemfk" (Let "t" (Const (-35)) (Const 15)) (Oper Plus (Const 13) (Const (-35)))) (Let "quwnjbmgfazrmwxsxxxzytqozthrr" (Const 24) (Const 45))))) (Oper Plus (Var "qbomvhykoxbssbcdikqpiulvfqywoslpyt") (Let "xguytgvjhudvzdwjyvtvbdeunak" (Oper Times (Const (-37)) (Let "vzacxufcvndwttymmlzi" (Oper Plus (Const 27) (Const 27)) (Oper Minus (Const (-20)) (Const 43)))) (Let "pevtocdzbams" (Oper Times (Const (-5)) (Let "cmtbmfsxluncrjobmqbsdgrezpufsvdmvqjepg" (Const (-11)) (Const 42))) (Var "zsfgbhmacbzfeakmptqeuqoceoxyqkugmhjpwuh"))))
+       1% Oper Minus (Oper Times (Oper Times (Let "hkeuvricbzgfjxdekonqxwzjxhesfravgenkafzmqtciur" (Let "yduyjpmgcebgamvlqqnkqgptgyrcxntyuxaaaiqmwhq" (Let "niadwsdybiqsxjnazepsuznkmaihdpzsxlkrkxpwjherux" (Const (-13)) (Const (-24))) (Let "scxxxlvfzcmdusnhqctjlgfvmwalmohohsjqvvj" (Const 14) (Const 19))) (Let "npktafvyyedxmnkwnqjhbelepugan" (Oper Minus (Const (-43)) (Const 38)) (Oper Plus (Const (-15)) (Const (-34))))) (Const (-42))) (Oper Plus (Oper Times (Var "sjiforzfdzlnlharegkwcuzlrohfmuwhelgavx") (Let "nrwnvubiyavsrhscehobqxytrhxqyxgr" (Let "ndqbchvzviyzxsvtgovln" (Const 33) (Const (-24))) (Var "fkdukezsstavvlwrquxotvzdchhwaaxodknxjfeiofo"))) (Oper Plus (Let "jyvkxmjfvzb" (Const 5) (Const 29)) (Var "zstgpbhnslystlzyqmqplalgenmxtrkxbjidqbecpiqp")))) (Const (-20))
+       1% Oper Minus (Var "dp") (Const 4)
+       1% Oper Minus (Var "zbxikyuvtcmrndkopvpfiwtteogxczmmblmv") (Oper Times (Oper Minus (Oper Plus (Let "hshrkraqcpubmckacvoetxffijmndwrrfpzxiragnuuguymbksftbjzrmtjpjskosyrkownuepkdthuw" (Const 66) (Let "tbavhuccskliwpp" (Let "ujvpkesi" (Const (-35)) (Const (-59))) (Let "zekseebcdqpeyrafoltvffrefhhkbqqslheqervibtiqdssrghnxgzspywnebvwvba" (Const 32) (Const 54)))) (Var "mhubbldwcgghatruyqm")) (Let "syyxgojbcmtzoistyyuuqmkww" (Oper Plus (Let "ubhjkdlfzzjhlyvtolfteokwhpkgxzovnuacgbpqvdbfvvpjpxbjopvqegcowswmgmuh" (Let "hiprqkamkfjpacnlavki" (Const 57) (Const 81)) (Oper Times (Const (-73)) (Const (-54)))) (Const 25)) (Var "girp"))) (Oper Minus (Const 43) (Var "ljrhxtrobnuxycyprbwkjiiqxilexccvzpawfwaupxolgjeqhfujkwkhowumguqywnsdpzgubbgkpgeavgg")))
+       1% Oper Plus (Const (-14)) (Const 31)
+       1% Oper Plus (Const (-16)) (Oper Times (Oper Minus (Var "ognfaayxxsejeswkqahkyjkpvloncyafvjwqkqeevrbiyriowelqxs") (Const (-25))) (Let "mnmjiuozyfopgcpvgfqwvhrxydnrfkjdcykipwly" (Oper Plus (Const 29) (Let "dovqlqebhmehmbzpyblzyhw" (Let "wgmcowuloba" (Const 30) (Const (-32))) (Let "jhwkiqfkpfuriltxhjiabfoj" (Const 37) (Const (-19))))) (Let "nhzheaecwaatxvklbmrau" (Let "izyfusbhkohxmyyeapbngaftfmwequlaggaqkqqgmrunivjhuoin" (Const (-49)) (Let "qvhywpeiaaltyjcckohjmxvqugqoycyuhdjasxxhgjsallggnffms" (Const (-34)) (Const (-38)))) (Oper Minus (Oper Times (Const (-34)) (Const 20)) (Let "mcjhvmaenhajmi" (Const (-46)) (Const 21))))))
+       1% Oper Plus (Const (-3)) (Const 1)
+       1% Oper Plus (Const 12) (Var "yyca")
+       1% Oper Plus (Const 44) (Const (-9))
+       1% Oper Plus (Const 47) (Let "muefeocnuwbiujkhnbbmntbagtbezoesgutjxrcxseb" (Const (-6)) (Var "zrqrodltplqqlzwzofwbkkrlqww"))
+       1% Oper Plus (Let "mig" (Const 4) (Let "v" (Const (-4)) (Const (-4)))) (Let "mtxl" (Oper Plus (Const 5) (Const 6)) (Oper Plus (Const 3) (Const (-4))))
+       1% Oper Plus (Oper Plus (Let "guikalkvyfcoo" (Oper Plus (Oper Minus (Const (-20)) (Const (-9))) (Const 1)) (Var "dyioswppcxxmiyxexogjglgc")) (Let "rhticihnbplgjkkoiuw" (Oper Plus (Let "mjnhuihuxbmbq" (Const 4) (Const 8)) (Const 14)) (Const 10))) (Const 3)
+       1% Oper Plus (Oper Times (Oper Minus (Var "xgru") (Const (-2))) (Var "zy")) (Const 15)
+       1% Oper Times (Let "ptosrymgfavdxqunvaxkepdjbiqx" (Const 14) (Oper Times (Var "lhklhstpmttwzhqzrwoeezhraymgru") (Const (-48)))) (Var "jstrerjyp")
+       1% Oper Times (Let "tqr" (Const (-10)) (Oper Plus (Var "xivifhmfpollpuoodetnn") (Const 0))) (Const (-29))
+       1% Oper Times (Oper Minus (Const 5) (Let "islukvihfptwhmhk" (Oper Times (Oper Plus (Const 2) (Const (-20))) (Let "y" (Const (-1)) (Const (-19)))) (Var "nfcg"))) (Const 6)
+       1% Oper Times (Oper Minus (Var "yz") (Var "pdpb")) (Const 6)
+       1% Oper Times (Oper Plus (Const (-85)) (Var "oqsqalsoxatossodjehnimkwcznbujedwikgzccagattdqgvzsr")) (Const (-74))
+       1% Oper Times (Oper Plus (Let "mzzeosagszmqunfjlacppbeawyfx" (Oper Times (Const 23) (Oper Minus (Oper Plus (Const (-12)) (Const (-13))) (Oper Times (Const 4) (Const 3)))) (Oper Plus (Let "eivwqmierfrzdkddvlvajskismponmhvr" (Const 24) (Const (-14))) (Const (-21)))) (Let "qfzthoceok" (Const (-20)) (Let "nrrkttyfsrhbazgqzjydehazxxblguykitcuuepiyw" (Const (-37)) (Oper Minus (Const 7) (Oper Minus (Const (-22)) (Const 10)))))) (Var "pquyehpicrabookjsdrlcukqhm")
+       1% Oper Times (Oper Plus (Let "ovzufpbivyxcuepcngkvsvxkhtvofjcnduhgsxvqzgjmtdutepndexmuztyqedfgidjfbncbaj" (Oper Minus (Const 7) (Let "qjbuqwqtdeymtbvlqpbbokdgoorhvwoaafpsdzlspwzqaiznhqblkzvzexswaazx" (Let "euzcupsdwtwikimvmvgbovahjfeo" (Const (-35)) (Let "xtvmqtismmcvxoxnd" (Const (-64)) (Const (-43)))) (Const 0))) (Let "lfozftnchfybee" (Let "jyrhzewucnpsunfpr" (Oper Times (Const 4) (Let "emdvkpznbkadxrprerjoykgkmgtinqwyvdlaqlxrxvsgevjoutnbcruyjwndyjlvwzxuswtcdnxusxggyukew" (Const 2) (Const 47))) (Const (-78))) (Const 3))) (Const 13)) (Const (-37))
+       1% Oper Times (Var "fjqllouazzgmrnmobjdkyvomlzygbfuskasqexjjcecwqojtg") (Let "bxuzhuhr" (Const (-28)) (Oper Minus (Let "mzyqssgzpfgznwsoofdhoaiavepgupuqosdv" (Let "ggvtlcjahzrmazrwsc" (Const (-14)) (Const 48)) (Oper Times (Oper Minus (Const 1) (Const (-2))) (Let "rwbbdmbhrudbfgxkzincuvolespx" (Const (-45)) (Const (-23))))) (Var "uwmnltcieywzlllagyeyedordtsqwvvnitzcbqyetjlwua")))
+       1% Oper Times (Var "kxqhifbgmxbwzgjoxqppnttlqfeekcofcsqofxxdzcehtyzhhqmjyzdhbeht") (Var "kxnhtrazmtuhgkzovlejvqarksjjxljximgykjcjvmltyjyvwbeezutmmjjarl")
+       1% Var "arfovpoc"
+       1% Var "aunsz"
+       1% Var "bbusokkkwfxawepadrnjrxukgrluhyjyxqke"
+       1% Var "djxiznemggtcmzqkcphppa"
+       1% Var "edbpvlkhjpfwlycefwyddhnuruklirwfjdwzzspxsfpacabzwdsozebrcbditbszhwfpolihjimpmmxnazp"
+       1% Var "fmvwgzmudpmknnbjlbrnlulqaucishxjxamwkcsbodzwwviimglwucvtvwrxudsariyyvj"
+       1% Var "gm"
+       1% Var "gqfsrbycvqsee"
+       1% Var "hdcahbxrqlvybo"
+       1% Var "hwegqdzktyqvxrdzshomttscvvpmzvohnaivjesxispatlbioniwv"
+       1% Var "i"
+       1% Var "idiugrwowiaobtklhlwyqbijyaoaxoqgoer"
+       1% Var "m"
+       1% Var "pdaqzyzzery"
+       1% Var "pykohjfhhrzdzdfgrvjoedopzjgvzhqmlditdwonvnlmjtdxcgbfabhyada"
+       1% Var "qtzwnymudatkrndvyguuyaaoxelkvxomchxgmmerdgvrtg"
+       1% Var "qvrscwflckmekijqgxwkehpaacgdyjhxwxagutccxbrdczxwbhrjthky"
+       1% Var "rfjavniyadhuwkwmrwbltmbzfauanuxkfpslmhszrspjvirbgmakgowk"
+       1% Var "swjcktxfpgmvbdcjrdhmzgaiizxffkbor"
+       1% Var "tagkvxtvqpuvbtewvonbnouxrkvrmsperoqzezctxkscxcpmgnaltobv"
+       1% Var "uhjhhapfbsyacixsovcbgzwerl"
+       1% Var "utnjzahmvffbbcnnsrsqvwfrxsrusebeufvoskie"
+       1% Var "utzkmikcfiqpuebvikqoz"
+       1% Var "xlosdo"
+       1% Var "yjpdloal"
+       1% Var "zsqxahknnspnkdiz"
+
+All 4 tests passed (0.01s)
