@@ -1,0 +1,139 @@
+module BoaParser (parseString) where
+
+import BoaAST
+
+import qualified Text.ParserCombinators.ReadP as RP
+import Data.Char (isSpace, isLetter, isPrint, isDigit)
+
+reserved = ["not", "for", "if", "in", "True", "False", "None"]
+
+negOper :: Op -> Exp -> Exp -> Exp
+negOper o e1 e2 = Not (Oper o e1 e2)
+
+parseString = parseTop p_Start
+
+---
+
+Start {:Program} ::=
+  Stmts                         {_1}.
+
+Stmts {:[Stmt]} ::=
+  Stmt                          {[_1]}
+| Stmt ";" Stmts                {_1 : _3}.
+
+Stmt {:Stmt} ::=
+  ident "=" Expr                {SDef _1 _3}
+| Expr                          {SExp _1}.
+
+Expr ::=
+  Expr2                         {_1}
+| "not" Expr                    {Not _2}.
+
+Expr2 ::=
+  Expr3                         {_1}
+| Expr3 Oper2 Expr3             {_2 _1 _3}.
+
+-- alternatvive to enumerating all alternatives in Expr2
+Oper2 ::=
+  "==" {Oper Eq}          | "!=" {negOper Eq}
+| "<" !'=' {Oper Less}    | ">=" {negOper Less}
+| ">" !'=' {Oper Greater} | "<=" {negOper Greater}
+| "in" {Oper In}          | "not" "in" {negOper In}.
+
+Expr3 ::=
+  Expr4                         {_1}
+| Expr3 "+" Expr4               {Oper Plus _1 _3}
+| Expr3 "-" Expr4               {Oper Minus _1 _3}.
+
+Expr4 ::=
+  ExprA                         {_1}
+| Expr4 "*" ExprA               {Oper Times _1 _3}
+| Expr4 "//" ExprA              {Oper Div _1 _3}
+| Expr4 "%" ExprA               {Oper Mod _1 _3}.
+
+ExprA {:Expr} ::=
+  numConst                      {Const (IntVal _1)}
+| stringConst                   {Const (StringVal _1)}
+| "None"                        {Const NoneVal}
+| "True"                        {Const TrueVal}
+| "False"                       {Const FalseVal}
+| ident                         {Var _1}
+| ident "(" Exprz ")"           {Call _1 _3}
+| "(" Expr ")"                  {_2}
+-- manually expanding the defs of Exprz and Exprs to facilitate left-factoring:
+| "[" "]"                       {List []}
+| "[" Expr "]"                  {List [_2]}
+| "[" Expr "," Exprs "]"        {List (_2 : _4)}
+
+| "[" Expr ForClause Clausez "]"
+                                {Compr _2 (_3 : _4)}.
+
+ForClause {:CClause} ::=
+  "for" ident "in" Expr         {CCFor _2 _4}.
+
+IfClause {:CClause} ::=
+  "if" Expr                     {CCIf _2}.
+
+Clausez {:[CClause]} ::=
+                                {[]}
+| ForClause Clausez             {_1 : _2}
+| IfClause Clausez              {_1 : _2}.
+
+Exprz {:[Exp]} ::=
+                                {[]}
+| Exprs                         {_1}.
+
+Exprs {:[Exp]} ::=
+  Expr                          {[_1]}
+| Expr "," Exprs                {_1 : _3}.
+
+stringConst {:String} ::=
+  ''' StringElt* '''            {concat _2}.
+
+StringElt {:String} ::=
+  @{? \c -> isPrint c && c `notElem` "'\\"}
+                                {[_1]}
+| '\' 'n'                       {"\n"}
+| '\' '\'                       {"\\"}
+| '\' '''                       {"'"}
+| '\' NewLine                   {""}.
+
+ident {:String} ::= Ident1{? `notElem` reserved}.
+
+Ident1 {:String} ::=
+  IdChar{?not.isDigit} IdChar* !IdChar
+                                {_1 : _2}.
+
+IdChar {:Char} ::=
+  @{?\c -> isLetter c || isDigit c || c == '_'}.
+
+numConst {:Int} ::=
+  SignedNum                     {read _1::Int}.
+
+SignedNum ::=
+  NLZDigits                     {_1}
+| '-' NLZDigits                 {_1:_2}.
+
+NLZDigits ::=
+  '0'                           {[_1]}
+| Digit{?/='0'} Digit* !Digit   {_1:_2}.
+
+Digit ::= @{?isDigit}.
+
+Whitespace ::= WSElt* !WSElt {()}.
+
+WSElt ::=
+  @{?isSpace} {()}
+| '#' Comment {()}.
+
+Comment ::=
+   NewLine {()}
+|  ComChar Comment {()}
+|  !@.  --at eof
+
+ComChar ::= @{?/= '\n'}.
+
+NewLine ::= @{?=='\n'}.
+
+-- when literal is a reserved word, it can't be followed by an IdChar
+_ ::= !IdChar{?const (_0 `elem` reserved)} Whitespace {()}.

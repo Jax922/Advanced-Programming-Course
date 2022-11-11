@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="By Ken Friis Larsen (kflarsen@diku.dk) with minor adjustments by Oleks Shturmov (oleks@oleks.info) and Mikkel Kragh Mathiesen (mkm@di.ku.dk)" />
+  <title>Rock, Paper, Scissors</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: 1;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Source+Serif+Pro|Oswald|Source+Code+Pro" />
+  <style>
+  body {
+      margin-top: 1.0em;
+      background-color: white;
+  /*    font-family: 'Gentium Book Basic', sans-serif;
+     font-size: 1.143em;
+  */    font-size: 13pt;
+      color: black;
+      width: 90%;
+      margin: 0 auto;
+  }
+
+  html {
+    font-family: "Source Serif Pro", Georgia, "Times New Roman", serif;
+  }
+
+  h2, h3, h4, h5, h6 {
+    font-family: "Oswald", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: #313131;
+    letter-spacing: -.025rem;
+  }
+
+  code {
+     font-family: "Source Code Pro", Menlo, monospace;
+  /*   font-size: 1.136em;
+      font-size: 13pt;;
+  */   background-color: #F0F3F3;
+
+  }
+
+  pre {
+     background-color: #F0F3F3;
+     padding: 6px;
+     word-wrap: break-word;
+     white-space: pre-wrap;
+     font-family: "Source Code Pro", Menlo, monospace;
+     border: 1px solid silver;
+  /*    font-size: 15pt;
+  */}
+
+  h1 {
+      font-family: "Oswald", Helvetica, Arial, sans-serif;
+  }
+
+  h1.title {
+      text-align: left;
+      /*font-size: 3.8em;
+      */color: black; margin-bottom: 3px;
+  }
+  h1 .small { font-size: 0.4em; }
+  h1 a { text-decoration: none }
+  h2 { font-size: 1.5em; color: black; }
+  h2.author { font-size: 1em; text-align: center; color: black; }
+  h3.date {  font-size: 1em; text-align: center; color: black; }
+  a { color: black; }
+  .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+  .download { float: right; }
+  /* pre { background: #000; color: #fff; padding: 15px;} */
+  hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+  .footer { text-align:center; padding-top:30px; font-style: italic; }
+  table   { border-collapse: collapse }
+  td { border: 1px solid black }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Rock, Paper, Scissors</h1>
+<p class="author">By Ken Friis Larsen <code>(kflarsen@diku.dk)</code>
+with minor adjustments by Oleks Shturmov <code>(oleks@oleks.info)</code>
+and Mikkel Kragh Mathiesen <code>(mkm@di.ku.dk)</code></p>
+<p class="date">Last revision: October 12, 2022</p>
+</header>
+<h1 id="part-1-warm-up">Part 1: Warm up</h1>
+<p>In the warm-up section of assignment 4 you were asked to implement an
+Erlang module called <code>async</code>, exporting the function
+<code>new/2</code>, <code>wait/1</code>, and <code>poll/1</code>. In
+this task, you should implement the same 3 functions, and 2 more, but
+now, using OTP. We repeat the descriptions of the initial 3 functions
+below, for reference:</p>
+<ul>
+<li><p><code>new(Fun, Arg)</code> starts a concurrent computation that
+computes <code>Fun(Arg)</code>. It returns an action ID.</p></li>
+<li><p><code>wait(Aid)</code> waits for an asynchronous action to
+complete, and return the value of the computation. If the asynchronous
+action threw an exception, then the exception is re-thrown by
+<code>wait</code>.</p></li>
+<li><p><code>poll(Aid)</code> checks whether an asynchronous action has
+completed yet. If it has not completed yet, then the result is
+<code>nothing</code>; otherwise the result is either
+<code>{exception, Ex}</code> if the asynchronous action raised the
+exception <code>Ex</code>, or <code>{ok, Res}</code> if it returned the
+value <code>Res</code>.</p></li>
+<li><p><code>wait_catch(Aid)</code> that waits for an asynchronous
+action to complete, and return either <code>{exception, Ex}</code> if
+the asynchronous action raised the exception <code>Ex</code>, or
+<code>{ok, Res}</code> if it returned the value
+<code>Res</code>.</p></li>
+<li><p><code>wait_any(Aids)</code> that waits for any of the supplied
+asynchronous actions to complete, where <code>Aids</code> is a non-empty
+list of asynchronous actions. If the first to complete throws an
+exception, then that exception is re-thrown by <code>wait_any</code>.
+Returns a pair <code>{Aid, Res}</code> where <code>Aid</code> is the
+action ID that completed with the result <code>Res</code>.</p></li>
+</ul>
+<p>Before you start you should take a moment to consider how many
+processes you need and what role(s) each process have. How the processes
+should communicate (which protocol). Which data each process is in
+charge of. Then you should consider whether <code>gen_server</code> or
+<code>gen_statem</code> is best for each process (we don’t expect you to
+use other parts of OTP).</p>
+<h1 id="part-2-rock-paper-scissors">Part 2: Rock, Paper, Scissors</h1>
+<h2 id="objective">Objective</h2>
+<p>The learning objectives of this assignment are:</p>
+<ul>
+<li><p>Gain hands-on programming experience with OTP.</p></li>
+<li><p>Practise using callback modules</p></li>
+<li><p>Orchestrating processes with a somewhat complicated communication
+protocol.</p></li>
+</ul>
+<h2 id="terminology">Terminology</h2>
+<p>This assignment is about making a game server for the
+rock–paper–scissors game. The traditional way to play a <em>round</em>
+of the game is that two people face each other, and then each player
+makes a <em>move</em> by forming their hand in the shape of either a
+<em>rock</em> (a clenched fist), a piece of <em>paper</em> (a flat
+palm), or a pair of <em>scissors</em> (index and middle fingers
+extended). The winner is then determined by the rule ‘paper wraps rock,
+rock blunts scissors, and scissors cut paper’. If both players form the
+same object, then the game is a tie and neither wins. A <em>full
+game</em> is often a best-of-<span class="math inline"><em>N</em></span>
+rounds, where the game consist of a number of <em>rounds</em> until one
+of the players has achieved a more than <span
+class="math inline"><em>N</em>/2</span> number of <em>wins</em> (<span
+class="math inline"><em>N</em></span> is agreed on in advance). Note
+that a full game may consists of a unbounded number of rounds.</p>
+<p>However, the traditional way to play the game often results in long
+disputes about how the players should make their moves simultaneous and
+whether they did so. Thus, we need a game server to avoid such disputes.
+Because we anticipate that our game server will be hugely popular we
+want it to be able to handle many concurrent games.</p>
+<p>The game server consists of a <em>game broker</em> and a number of
+<em>game coordinators</em>. The broker takes care of matching up
+players, and then assign a (perhaps newly started) coordinator when two
+players have been matched up. The coordinator orchestrates a game
+(consisting of a number of rounds) between two players.</p>
+<p>Two players match up if they want to play a best-of-<span
+class="math inline"><em>N</em></span> game with the same <span
+class="math inline"><em>N</em></span>.</p>
+<h2 id="the-rps-module">The <code>rps</code> module</h2>
+<p>Implement an Erlang module <code>rps</code> with the following
+API:</p>
+<ul>
+<li><p><code>start()</code> for starting a broker.</p>
+<p>Returns <code>{ok, BrokerRef}</code> on success or
+<code>{error, Reason}</code> if some error occurred.</p></li>
+<li><p><code>queue_up(BrokerRef, Name, Rounds)</code> for queueing up
+for a best-of-<code>Rounds</code> game. <code>Name</code> is the name of
+the player and can be any Erlang term and <code>Rounds</code> should be
+a non-negative integer.</p>
+<p>Returns <code>{ok, OtherPlayer, Coordinator}</code> on success, where
+<code>OtherPlayer</code> is the name of the other player and
+<code>Coordinator</code> is a reference to a game coordinator;
+<code>server_stopping</code> if the server is being drained (see the
+description for <code>drain</code>); or <code>{error, Reason}</code> if
+some other error occurred.</p></li>
+<li><p><code>move(Coordinator, Choice)</code> for making a move in a
+game, where <code>Coordinator</code> is a reference to a game
+coordinator and <code>Choice</code> is one of the atoms
+<code>rock</code>, <code>paper</code>, or <code>scissors</code>. Returns
+either:</p>
+<ul>
+<li><p><code>tie</code> if the round was a tie. This include the case
+where both players play an invalid choice (e.g.,
+<code>laser</code>).</p></li>
+<li><p><code>win</code> if the player won the round.</p></li>
+<li><p><code>{loss, WinningChoice}</code> if the player lost the round,
+where the winner played <code>WinningChoice</code>. If the player plays
+an invalid choice (and the opponent plays a valid choice), this counts
+as a loss for the player.</p></li>
+<li><p><code>{game_over, Your, Other}</code> if the game is over and you
+won <code>Your</code> rounds and the other player won <code>Other</code>
+rounds.</p></li>
+<li><p><code>server_stopping</code> if the server is being drained (see
+the description for <code>drain</code>).</p></li>
+</ul>
+<p>Only players (processes) that have been assigned to the coordinator
+by a broker should call this function, likewise after this function has
+returned <code>server_stopping</code> or
+<code>{game_over, Your, Other}</code>, it is no longer valid for that
+player to call the function. If these requirements are not fulfilled it
+is unspecified what the function will return or do (it might even block
+forever).</p></li>
+<li><p><code>statistics(BrokerRef)</code> for getting some statistics
+about the server. Returns a tuple with four elements
+<code>{ok, LongestGame, InQueue, Ongoing}</code> where
+<code>LongestGame</code> is the longest game (number of rounds,
+including ties) completed on the server so far, <code>InQueue</code> is
+the number of players, currently waiting to be matched up, and
+<code>Ongoing</code> is the number of games currently going on.</p></li>
+<li><p><code>drain(BrokerRef, Pid, Msg)</code> for stopping the broker
+and all coordinators. Players queued up and new players should be sent
+an error response to their <code>queue_up</code> calls, and players in
+an ongoing game should get a <code>server_stopping</code> response to
+their <code>move</code> calls.</p>
+<p>The function is non-blocking, hence it might return before the
+draining is completed. After the draining is completed <code>Msg</code>
+is sent to <code>Pid</code>, unless <code>Pid</code> is the atom
+<code>none</code>. The sending of <code>Msg</code> to <code>Pid</code>
+should be as a plain Erlang message (that is, by using
+<code>!</code>).</p></li>
+</ul>
+<h2 id="using-the-rps-module">Using the <code>rps</code> module</h2>
+<p>The following example shows a computer player that follows the simple
+strategy of always making the <code>rock</code> move.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode erlang"><code class="sourceCode erlang"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-module</span><span class="fu">(</span><span class="ch">rock_bot</span><span class="fu">).</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">-export</span><span class="fu">([</span><span class="ch">queue_up_and_play</span><span class="op">/</span><span class="dv">1</span><span class="fu">]).</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">queue_up_and_play(</span><span class="va">Broker</span><span class="fu">)</span> <span class="op">-&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="ch">ok</span><span class="fu">,</span> <span class="va">_Other</span><span class="fu">,</span> <span class="va">Coor</span><span class="fu">}</span> <span class="op">=</span> <span class="fu">rps:queue_up(</span><span class="va">Broker</span><span class="fu">,</span> <span class="st">&quot;Rock bot(tom)&quot;</span><span class="fu">,</span> <span class="dv">3</span><span class="fu">),</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rock_to_game_over(</span><span class="va">Coor</span><span class="fu">).</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rock_to_game_over(</span><span class="va">Coor</span><span class="fu">)</span> <span class="op">-&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">case</span> <span class="fu">rps:move(</span><span class="va">Coor</span><span class="fu">,</span> <span class="ch">rock</span><span class="fu">)</span> <span class="kw">of</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="ch">game_over</span><span class="fu">,</span> <span class="va">Me</span><span class="fu">,</span> <span class="va">SomeLoser</span><span class="fu">}</span> <span class="op">-&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span><span class="ch">ok</span><span class="fu">,</span> <span class="va">Me</span><span class="fu">,</span> <span class="va">SomeLoser</span><span class="fu">};</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="ch">server_stopping</span> <span class="op">-&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="ch">server_stopping</span><span class="fu">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">_</span> <span class="op">-&gt;</span> <span class="fu">rock_to_game_over(</span><span class="va">Coor</span><span class="fu">)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span><span class="fu">.</span></span></code></pre></div>
+<h2 id="testing-rps">Testing <code>rps</code></h2>
+<p>You tests should be in a module called <code>test_rps</code> in the
+<code>tests</code> directory, this module should export at least one
+function, <code>test_all/0</code>. We will run your tests against our
+special <code>rps</code> module(s), and OnlineTA might not do any
+testing of your code unless it is minimally satisfied with your
+tests.</p>
+<p>Note that since we’ll run your tests against <em>our</em>
+<code>rps</code> module, the tests that are performed from
+<code>test_all/0</code> shouldn’t rely on things specific to
+<em>your</em> solution. Thus, if you have tests that are specific to
+your implementation, then you might want to export a
+<code>test_everything/0</code> function as well (that could call
+<code>test_all/0</code>).</p>
+<h2 id="hand-in-instructions">Hand-in Instructions</h2>
+<p>You should hand in two things:</p>
+<ol type="1">
+<li><p>A short report, <code>report.pdf</code> (normally 1–3 pages,
+excluding figures), for the main (not warm-up) part only, explaining the
+main design of your code, and <strong>an assessment</strong> of your
+implementation, including what this assessment is based on. See the
+generic instructions regarding the report in previous assignments.</p>
+<p>In your report you should describe what state your server (and other
+relevant processes) maintain. Likewise, consider making a diagram of
+your processes. How do the processes interact, and how many (kinds of)
+processes are there in the system?</p>
+<p>You should consider using <code>gen_statem</code> for implementing
+the coordinators. In your report, you should discuss whether you have
+used <code>gen_statem</code> or not, and why, or why not.</p></li>
+<li><p>A ZIP archive <code>code.zip</code>, mirroring the structure of
+the handout, containing your source code and tests.</p></li>
+</ol>
+<p>Make sure that you adhere to the types of the API, and test that you
+do.</p>
+<p>To keep your TA happy, follow these simple rules:</p>
+<ol type="1">
+<li>The Erlang compiler, with the parameter <code>-Wall</code>, should
+not yield any errors or warnings for your code.</li>
+<li>You should comment your code properly, especially if you doubt its
+correctness, or if you think there is a more elegant way to write a
+certain piece of code. A good comment should explain your ideas and
+provide insight.</li>
+<li>Adhere to the restrictions set in the assignment text, and make sure
+that you export all of the requested API (even if some functions only
+have a dummy implementation).</li>
+<li>Describe clearly what parts of the assignment you have solved.</li>
+</ol>
+<hr />
+<p>End of assignment text.</p>
+</body>
+</html>

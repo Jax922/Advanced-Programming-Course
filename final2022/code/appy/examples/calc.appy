@@ -1,0 +1,37 @@
+module WarmupReadP where
+
+import qualified Text.ParserCombinators.ReadP as RP
+import Data.Char (isDigit, isSpace, digitToInt)
+
+type ParseError = String
+
+data Exp = Num Int | Negate Exp | Add Exp Exp
+  deriving (Eq, Show)
+
+parseString :: String -> Either ParseError Exp
+parseString = parseTop p_E
+
+---
+
+E ::=
+  E "+" T         {Add _1 _3}
+| E "-" T         {Add _1 (Negate _3)}
+| T               {_1}
+| "-" T           {Negate _2}.
+
+T ::=
+  num             {_1}
+| "(" E ")"       {_2}.
+
+num ::= Digits    {Num _1}.
+
+Digits ::=
+  Digits Digit    {10*_1 + _2}
+| Digit           {_1}.
+
+-- or: Digit ::= '0' {0} | '1' {1} | '2' {2} | '3' {3} | ... | '9' {9}
+Digit ::= @{?isDigit} {digitToInt _1}.
+
+Whitespace ::= {()} | @{?isSpace} Whitespace {()}.
+
+_ ::= Whitespace.

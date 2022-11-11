@@ -1,0 +1,70 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           appy
+version:        0.0.0
+build-type:     Simple
+
+library
+  exposed-modules:
+      Definitions
+      Parser
+      Transformer
+      Generator
+  other-modules:
+      ParserImpl
+      TransformerImpl
+      Paths_appy
+  hs-source-dirs:
+      src
+  build-depends:
+      base
+    , containers
+    , mtl
+    , parsec
+    , text
+  default-language: Haskell2010
+
+executable appy
+  main-is: Main.hs
+  other-modules:
+      Definitions
+      Generator
+      Parser
+      ParserImpl
+      Transformer
+      TransformerImpl
+      Paths_appy
+  hs-source-dirs:
+      src
+      app
+  build-depends:
+      base
+    , containers
+    , mtl
+    , parsec
+    , text
+  default-language: Haskell2010
+
+test-suite primary-test-suite
+  type: exitcode-stdio-1.0
+  main-is: BlackBox.hs
+  other-modules:
+      Paths_appy
+  hs-source-dirs:
+      tests
+  build-depends:
+      QuickCheck
+    , appy
+    , base
+    , containers
+    , mtl
+    , parsec
+    , tasty
+    , tasty-hunit
+    , tasty-quickcheck
+    , text
+  default-language: Haskell2010

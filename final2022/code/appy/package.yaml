@@ -1,0 +1,46 @@
+name: appy
+
+# The packages we (may) depend on
+dependencies:
+  - base             # For built-in functions like `length`
+  - containers       # For Data.Map, etc., if needed
+  - text             # For Data.Text, if needed
+  - mtl              # For Control.Monad.*, if needed
+  - parsec           # If needed; ReadP is already part of base
+  # Don't add anything else here
+
+# The APpy libraries
+library:
+  source-dirs: src
+  exposed-modules:
+    - Definitions
+    - Parser
+    - Transformer
+    - Generator
+
+executable:
+  source-dirs:
+    - src
+    - app
+  main: Main.hs
+
+# Sample test suite
+tests:
+  primary-test-suite:
+    main: BlackBox.hs
+    source-dirs: tests
+    dependencies:
+      - appy
+      - tasty
+      - tasty-hunit
+      - QuickCheck       # if you want to use it
+      - tasty-quickcheck # ditto
+      # Don't add anything else here
+#  other-test-suite:
+#    main: WhiteBox.hs
+#    source-dirs: [tests/suite1, src]
+#    dependencies:
+#      - appy
+#      - tasty
+#      - tasty-hunit
+#      # Whatever else you need from the exam LTS version
